@@ -1,11 +1,11 @@
-from image_loader.loader import load
+from image_loader.loader import load_image
 
 TESTING_IMAGE_PATH = "data/testing-image.jpg"
 
 def main():
     print("[image-enhancer]: welcome to the program!")
     
-    image = load(TESTING_IMAGE_PATH)
+    image = load_image(TESTING_IMAGE_PATH)
     
     image.show()
     
