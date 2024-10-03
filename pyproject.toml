@@ -12,6 +12,8 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.12"
 
+[tool.poetry.scripts]
+main = "main.index:main"
 
 [build-system]
 requires = ["poetry-core"]
