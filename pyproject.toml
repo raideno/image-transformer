@@ -4,7 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["raiden <nadirkichou@hotmail.fr>"]
 readme = "README.md"
-packages = [{include = "main", from = "src"}]
+packages = [
+    {include = "main", from = "src"},
+    {include = "image_processor", from = "src"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
