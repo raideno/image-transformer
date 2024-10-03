@@ -6,6 +6,7 @@ authors = ["raiden <nadirkichou@hotmail.fr>"]
 readme = "README.md"
 packages = [
     {include = "main", from = "src"},
+    {include = "image_loader", from = "src"},
     {include = "image_processor", from = "src"}
 ]
 
