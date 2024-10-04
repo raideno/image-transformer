@@ -10,3 +10,6 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         square_y_coordinate = (y // self.square_size)
         
         return (square_x_coordinate, square_y_coordinate)
+    
+    def getCoordinatesStartingPosition(self: 'GenericGridImageProcessor', grid_x: int, grid_y: int) -> Tuple[int, ...]:
+        return (grid_x * self.square_size, grid_y * self.square_size)
