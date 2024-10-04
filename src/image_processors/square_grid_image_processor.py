@@ -6,4 +6,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         self.square_size = square_size
     
     def convertToGridCoordinatesFromPixelCoordinates(self: 'GenericGridImageProcessor', x: int, y: int) -> Tuple[int, ...]:
-        return (x, y)
+        square_x_coordinate = (x // self.square_size)
+        square_y_coordinate = (y // self.square_size)
+        
+        return (square_x_coordinate, square_y_coordinate)
