@@ -1,6 +1,6 @@
 from typing import Tuple
+from cairo import Context
 from abc import ABC, abstractmethod
-from cairo import Context, SVGSurface
 
 class GenericGridImageProcessor(ABC):
     @abstractmethod
@@ -12,5 +12,5 @@ class GenericGridImageProcessor(ABC):
         pass
     
     @abstractmethod
-    def drawGridElement(self: 'GenericGridImageProcessor', context: Context[SVGSurface], pos_x: int, pos_y: int, color: Tuple[int, int, int]) -> None:
+    def drawGridElement(self: 'GenericGridImageProcessor', context: Context, pos_x: int, pos_y: int, color: Tuple[int, int, int]) -> None:
         pass
