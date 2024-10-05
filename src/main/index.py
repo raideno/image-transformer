@@ -13,7 +13,8 @@ from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 from image_processors.square_grid_image_processor import SquareGridImageProcessor
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
-SQUARE_WIDTH = 10
+SQUARE_WIDTH = 25
+HEX_SIZE = 4
 
 def main():
     print("[image-enhancer]: welcome to the program!")
@@ -40,9 +41,9 @@ def main():
     image_height = image_array.shape[0]
     image_width = image_array.shape[1]
     
-    square_grid_image_processor: GenericGridImageProcessor = SquareGridImageProcessor(SQUARE_WIDTH)
+    grid_image_processor: GenericGridImageProcessor = SquareGridImageProcessor(SQUARE_WIDTH)
     
-    squares: dict[tuple[int, int], list[tuple[int, int]]] = {}
+    grid_elements: dict[tuple[int, int], list[tuple[int, int]]] = {}
     
     average_pixels_processor: GenericPixelsProcessor = AveragePixelsProcessor()
     frequent_pixels_processor: GenericPixelsProcessor = MostFrequentPixelsProcessor()
@@ -50,21 +51,23 @@ def main():
     # NOTE: image analysis
     for y in range(0, image_height):
         for x in range(0, image_width):
-            square_grid_x, square_grid_y = square_grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
+            grid_element_x, grid_element_y = grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
             
-            key = (square_grid_x, square_grid_y)
+            key = (grid_element_x, grid_element_y)
             
-            if squares.get(key):
-                squares[key].append((x, y))
+            if grid_elements.get(key):
+                grid_elements[key].append((x, y))
             else:
-                squares[key] = [(x, y)]
+                grid_elements[key] = [(x, y)]
                 
     print(f"[image-enhancer](image-width): {image_width}")
     print(f"[image-enhancer](image-height): {image_height}")
     
     print(f"[image-enhancer](number-of-pixels): {image_height * image_width}")
     
-    print(f"[image-enhancer](number-of-squares): {len(squares.keys())}")
+    print(f"[image-enhancer](number-of-grid_elements): {len(grid_elements.keys())}")
+    
+    grid_image_processor.enableStrokeColor()
 
     # NOTE: image reconstruction
     with cairo.SVGSurface(f"{image_name}.svg", image_width, image_height) as surface: 
@@ -76,21 +79,18 @@ def main():
         context.set_source_rgb(0.2, 0.6, 0.9)
         context.set_line_width(2)
         
-        for square in squares:
-            square_grid_x, square_grid_y = square
+        for grid_element in grid_elements:
+            grid_element_x, grid_element_y = grid_element
             
-            pixels_coordinates = squares[square]
+            pixels_coordinates = grid_elements[grid_element]
             
             pixels = np.array([image_array[y, x] for x, y in pixels_coordinates])
             
-            pos_x, pos_y = square_grid_image_processor.getCoordinatesStartingPosition(square_grid_x, square_grid_y)
-            
+            pos_x, pos_y = grid_image_processor.getCoordinatesStartingPosition(grid_element_x, grid_element_y)
+                        
             color = frequent_pixels_processor.getRGBColorFromPixels(pixels)
             
-            square_grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
-            
-            context.set_source_rgb(0, 0, 0)
-            context.stroke()
+            grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
 
         surface.write_to_png(f"{image_name}.svg")
     
