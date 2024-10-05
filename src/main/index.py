@@ -1,4 +1,5 @@
 import os
+import sys
 import cairo 
 
 import numpy as np
@@ -13,9 +14,11 @@ from image_processors.square_grid_image_processor import SquareGridImageProcesso
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 TESTING_IMAGE_PATH = "data/simple-image.png"
-SQUARE_WIDTH = 76
+SQUARE_WIDTH = 10
 
 def main():
+    print(f"[image-enhancer]: {sys.argv[1:]}")
+    
     print("[image-enhancer]: welcome to the program!")
     
     image_file_name = os.path.basename(TESTING_IMAGE_PATH)
@@ -75,10 +78,7 @@ def main():
             
             color = frequent_pixels_processor.getRGBColorFromPixels(pixels)
             
-            context.rectangle(pos_x, pos_y, SQUARE_WIDTH, SQUARE_WIDTH)
-
-            context.set_source_rgb(color[0], color[1], color[2])
-            context.fill_preserve()
+            square_grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
             
             context.set_source_rgb(0, 0, 0)
             context.stroke()
