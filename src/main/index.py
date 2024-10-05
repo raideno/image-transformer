@@ -13,18 +13,27 @@ from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 from image_processors.square_grid_image_processor import SquareGridImageProcessor
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
-TESTING_IMAGE_PATH = "data/simple-image.png"
 SQUARE_WIDTH = 10
 
 def main():
-    print(f"[image-enhancer]: {sys.argv[1:]}")
-    
     print("[image-enhancer]: welcome to the program!")
     
-    image_file_name = os.path.basename(TESTING_IMAGE_PATH)
-    image_name = os.path.splitext(image_file_name)[0]
+    arguments = sys.argv[1:]
     
-    image = load_image(TESTING_IMAGE_PATH)
+    if not arguments:
+        print("[image-enhancer](error): no image path provided.")
+        sys.exit(1)
+    
+    image_path = arguments[0]
+    
+    if not os.path.isfile(image_path):
+        print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
+        sys.exit(1)
+    
+    image = load_image(image_path)
+    
+    image_file_name = os.path.basename(image_path)
+    image_name = os.path.splitext(image_file_name)[0]
     
     image_array = np.array(image)
     
