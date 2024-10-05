@@ -19,3 +19,4 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         context.rectangle(pos_x, pos_y, self.square_size, self.square_size)
         context.set_source_rgb(color[0], color[1], color[2])
         context.fill_preserve()
+        context.stroke()
