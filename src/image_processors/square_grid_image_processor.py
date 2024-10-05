@@ -21,7 +21,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         context.set_source_rgb(color[0], color[1], color[2])
         context.fill_preserve()
         
-        if (self.color_stroke)
+        if (self.color_stroke):
             context.set_source_rgb(0, 0, 0)
         
         context.stroke()
