@@ -23,3 +23,4 @@ This Python application reads a low-resolution .png image and generates a scalab
 - [ ] Generate SVG File at the end
 - [ ] Have the "grid" be generalized in a class or something, like it should be easy to implement a new grid
 - [ ] Learn about numpy meshgrid
+- [ ] Do the resolution have an importance in this case ? Recall what is the resolution
