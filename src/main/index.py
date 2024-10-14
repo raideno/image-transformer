@@ -2,6 +2,8 @@ import os
 import sys
 import cairo 
 
+import argparse
+
 import numpy as np
 
 from image_loader.loader import load_image
@@ -28,36 +30,39 @@ pixels_processors: dict[str, GenericPixelsProcessor] = {
 
 DEFAULT_PIXELS_PROCESSORS = "average"
 
-SQUARE_WIDTH = 25
-HEX_SIZE = 4
+DEFAULT_SIZE = 10
 
 def main():
-    print("[image-enhancer]: welcome to the program!")
+    parser = argparse.ArgumentParser(
+        prog="Image Enhancer",
+        description="Transform your images into svg",
+    )
+
+    parser.add_argument("image_path", type=str)
+    parser.add_argument("-g", "--grid", type=str, choices=image_processors.keys(), default=DEFAULT_IMAGE_PROCESSOR)
+    parser.add_argument("-p", "--pixels", type=str, choices=pixels_processors.keys(), default=DEFAULT_PIXELS_PROCESSORS)
+    parser.add_argument("-s", "--size", type=int, default=DEFAULT_SIZE)
     
-    arguments = sys.argv[1:]
+    raw_arguments = sys.argv[1:]
     
-    if not arguments or len(arguments) < 2:
-        print("[image-enhancer](error): wrong arguments provided.")
-        print("[image-enhancer](error): expected a minimum of 2 arguments, <image-path> <image-processor> [<pixels-processor>]")
+    arguments = parser.parse_args(raw_arguments)
+    
+    image_path = arguments.image_path
+    image_processor = arguments.grid
+    pixels_processor = arguments.pixels
+    size = arguments.size
+    
+    print(f"[image-enhancer]: {arguments}")
+    
+    if size < 1 or size > 100:
+        print(f"[image-enhancer](error): the size '{size}' is not valid. It must be between 1 and 100.")
         sys.exit(1)
-    
-    image_path = arguments[0]
-    image_processor = arguments[1] or DEFAULT_IMAGE_PROCESSOR
-    pixels_processor = arguments[2] if len(arguments) > 2 else DEFAULT_PIXELS_PROCESSORS
     
     if not os.path.isfile(image_path):
         print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
         sys.exit(1)
-    
-    if not (image_processor in image_processors.keys()):
-        print(f"[image-enhancer](error): '{image_processor}' is not a supported image processor.")
-        print(f"[image-enhancer](error): valid image processors are: {", ".join(image_processors.keys())}.")
-        sys.exit(1)
         
-    if not (pixels_processor in pixels_processors.keys()):
-        print(f"[image-enhancer](error): '{pixels_processor}' is not a supported pixels processor.")
-        print(f"[image-enhancer](error): valid pixels processors are: {", ".join(pixels_processors.keys())}.")
-        sys.exit(1)
+    print("[image-enhancer]: welcome to the program!")
     
     image = load_image(image_path)
     
@@ -69,7 +74,7 @@ def main():
     image_height = image_array.shape[0]
     image_width = image_array.shape[1]
     
-    grid_image_processor: GenericGridImageProcessor = image_processors[image_processor](SQUARE_WIDTH)
+    grid_image_processor: GenericGridImageProcessor = image_processors[image_processor](size)
     image_pixels_processor: GenericPixelsProcessor = pixels_processors[pixels_processor]()
     
     grid_elements: dict[tuple[int, int], list[tuple[int, int]]] = {}
