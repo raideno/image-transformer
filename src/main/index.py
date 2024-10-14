@@ -8,6 +8,7 @@ import numpy as np
 
 from image_loader.loader import load_image
 
+from pixels_processors.random_pixels_processor import RandomPixelsProcessor
 from pixels_processors.average_pixels_processor import AveragePixelsProcessor
 from pixels_processors.frequent_pixels_processor import MostFrequentPixelsProcessor
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
@@ -24,8 +25,9 @@ image_processors: dict[str, GenericGridImageProcessor] = {
 DEFAULT_IMAGE_PROCESSOR = "hexagonal"
 
 pixels_processors: dict[str, GenericPixelsProcessor] = {
+    "random": RandomPixelsProcessor,
     "average": AveragePixelsProcessor,
-    "frequent": MostFrequentPixelsProcessor
+    "frequent": MostFrequentPixelsProcessor,
 }
 
 DEFAULT_PIXELS_PROCESSORS = "average"
@@ -82,14 +84,9 @@ def main():
     # NOTE: image analysis
     for y in range(0, image_height):
         for x in range(0, image_width):
-            grid_element_x, grid_element_y = grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
-            
-            key = (grid_element_x, grid_element_y)
-            
-            if grid_elements.get(key):
-                grid_elements[key].append((x, y))
-            else:
-                grid_elements[key] = [(x, y)]
+            key = grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
+
+            grid_elements.setdefault(key, []).append((x, y))
                 
     print(f"[image-enhancer](image-width): {image_width}")
     print(f"[image-enhancer](image-height): {image_height}")
@@ -104,11 +101,8 @@ def main():
     with cairo.SVGSurface(f"{image_name}.svg", image_width, image_height) as surface: 
         context = cairo.Context(surface)
             
-        context.set_source_rgb(1, 1, 1)
+        context.set_source_rgb(255, 255, 255)
         context.paint()
-        
-        context.set_source_rgb(0.2, 0.6, 0.9)
-        context.set_line_width(2)
         
         for grid_element in grid_elements:
             grid_element_x, grid_element_y = grid_element
