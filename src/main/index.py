@@ -1,12 +1,13 @@
 import os
 import sys
-import cairo 
-
+import cairo
+import tomllib
 import argparse
 
 import numpy as np
 
 from image_loader.loader import load_image
+from utils.configurations_loader import load_configurations
 
 from pixels_processors.random_pixels_processor import RandomPixelsProcessor
 from pixels_processors.average_pixels_processor import AveragePixelsProcessor
@@ -22,31 +23,27 @@ image_processors: dict[str, GenericGridImageProcessor] = {
     "square": SquareGridImageProcessor,
 }
 
-DEFAULT_IMAGE_PROCESSOR = "hexagonal"
-
 pixels_processors: dict[str, GenericPixelsProcessor] = {
     "random": RandomPixelsProcessor,
     "average": AveragePixelsProcessor,
     "frequent": MostFrequentPixelsProcessor,
 }
 
-DEFAULT_PIXELS_PROCESSORS = "frequent"
+CONFIGURATION_FILE_PATH = "configurations.toml"
 
-DEFAULT_SIZE = 10
+configurations = load_configurations(CONFIGURATION_FILE_PATH)
 
-DEFAULT_OUTPUT_PATH = "./"
-
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         prog="Image Enhancer",
         description="Transform your images into svg",
     )
 
     parser.add_argument("image_path", type=str)
-    parser.add_argument("-g", "--grid", type=str, choices=image_processors.keys(), default=DEFAULT_IMAGE_PROCESSOR)
-    parser.add_argument("-p", "--pixels", type=str, choices=pixels_processors.keys(), default=DEFAULT_PIXELS_PROCESSORS)
-    parser.add_argument("-s", "--size", type=int, default=DEFAULT_SIZE)
-    parser.add_argument("-o", "--output-directory", "--output_directory", type=str, default=DEFAULT_OUTPUT_PATH)
+    parser.add_argument("-g", "--grid", type=str, choices=image_processors.keys(), default=configurations["defaults"]["image-processor"])
+    parser.add_argument("-p", "--pixels", type=str, choices=pixels_processors.keys(), default=configurations["defaults"]["pixels-processor"])
+    parser.add_argument("-s", "--size", type=int, default=configurations["defaults"]["size"])
+    parser.add_argument("-o", "--output-directory", "--output_directory", type=str, default=configurations["defaults"]["output-directory"])
     parser.add_argument("-v", "--verbose", action="store_true")
     
     raw_arguments = sys.argv[1:]

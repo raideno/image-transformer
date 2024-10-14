@@ -1,0 +1,5 @@
+[defaults]
+size = 10
+output-directory = "./"
+image-processor = "hexagonal"
+pixels-processor = "frequent"
