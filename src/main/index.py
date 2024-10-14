@@ -10,8 +10,23 @@ from pixels_processors.average_pixels_processor import AveragePixelsProcessor
 from pixels_processors.frequent_pixels_processor import MostFrequentPixelsProcessor
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
+from image_processors.hex_grid_image_processor import HexGridImageProcessor
 from image_processors.square_grid_image_processor import SquareGridImageProcessor
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
+
+image_processors: dict[str, GenericGridImageProcessor] = {
+    "hexagonal": HexGridImageProcessor,
+    "square": SquareGridImageProcessor,
+}
+
+DEFAULT_IMAGE_PROCESSOR = "hexagonal"
+
+pixels_processors: dict[str, GenericPixelsProcessor] = {
+    "average": AveragePixelsProcessor,
+    "frequent": MostFrequentPixelsProcessor
+}
+
+DEFAULT_PIXELS_PROCESSORS = "average"
 
 SQUARE_WIDTH = 25
 HEX_SIZE = 4
@@ -21,14 +36,27 @@ def main():
     
     arguments = sys.argv[1:]
     
-    if not arguments:
-        print("[image-enhancer](error): no image path provided.")
+    if not arguments or len(arguments) < 2:
+        print("[image-enhancer](error): wrong arguments provided.")
+        print("[image-enhancer](error): expected a minimum of 2 arguments, <image-path> <image-processor> [<pixels-processor>]")
         sys.exit(1)
     
     image_path = arguments[0]
+    image_processor = arguments[1] or DEFAULT_IMAGE_PROCESSOR
+    pixels_processor = arguments[2] if len(arguments) > 2 else DEFAULT_PIXELS_PROCESSORS
     
     if not os.path.isfile(image_path):
         print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
+        sys.exit(1)
+    
+    if not (image_processor in image_processors.keys()):
+        print(f"[image-enhancer](error): '{image_processor}' is not a supported image processor.")
+        print(f"[image-enhancer](error): valid image processors are: {", ".join(image_processors.keys())}.")
+        sys.exit(1)
+        
+    if not (pixels_processor in pixels_processors.keys()):
+        print(f"[image-enhancer](error): '{pixels_processor}' is not a supported pixels processor.")
+        print(f"[image-enhancer](error): valid pixels processors are: {", ".join(pixels_processors.keys())}.")
         sys.exit(1)
     
     image = load_image(image_path)
@@ -41,12 +69,10 @@ def main():
     image_height = image_array.shape[0]
     image_width = image_array.shape[1]
     
-    grid_image_processor: GenericGridImageProcessor = SquareGridImageProcessor(SQUARE_WIDTH)
+    grid_image_processor: GenericGridImageProcessor = image_processors[image_processor](SQUARE_WIDTH)
+    image_pixels_processor: GenericPixelsProcessor = pixels_processors[pixels_processor]()
     
     grid_elements: dict[tuple[int, int], list[tuple[int, int]]] = {}
-    
-    average_pixels_processor: GenericPixelsProcessor = AveragePixelsProcessor()
-    frequent_pixels_processor: GenericPixelsProcessor = MostFrequentPixelsProcessor()
     
     # NOTE: image analysis
     for y in range(0, image_height):
@@ -88,7 +114,7 @@ def main():
             
             pos_x, pos_y = grid_image_processor.getCoordinatesStartingPosition(grid_element_x, grid_element_y)
                         
-            color = frequent_pixels_processor.getRGBColorFromPixels(pixels)
+            color = image_pixels_processor.getRGBColorFromPixels(pixels)
             
             grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
 
