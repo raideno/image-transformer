@@ -30,7 +30,7 @@ pixels_processors: dict[str, GenericPixelsProcessor] = {
     "frequent": MostFrequentPixelsProcessor,
 }
 
-DEFAULT_PIXELS_PROCESSORS = "average"
+DEFAULT_PIXELS_PROCESSORS = "frequent"
 
 DEFAULT_SIZE = 10
 
@@ -86,7 +86,9 @@ def main():
         for x in range(0, image_width):
             key = grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
 
-            grid_elements.setdefault(key, []).append((x, y))
+            grid_elements.setdefault(key, [])
+            
+            grid_elements[key].append((x, y))
                 
     print(f"[image-enhancer](image-width): {image_width}")
     print(f"[image-enhancer](image-height): {image_height}")
