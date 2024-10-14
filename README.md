@@ -10,6 +10,31 @@ This Python application reads a low-resolution .png image and generates a scalab
 
 **Note:** for more details about all the available params use the following command: `poetry run main --help`.
 
+## Examples
+
+<table>
+    <tr>
+        <td>Original Image</td>
+        <td>Generated SVG</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data/simple-image.png" alt="Original Image">
+        </td>
+        <td>
+            <img src="data/simple-image.svg" alt="Generated SVG">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data/testing-image.jpg" alt="Original Image">
+        </td>
+        <td>
+            <img src="data/testing-image.svg" alt="Generated SVG">
+        </td>
+    </tr>
+</table>
+
 ## Materials & Notes:
 
 This are for people who want to dig in hexagonal grids & know how to deal with it. Ignore if you only want to use the tool.
