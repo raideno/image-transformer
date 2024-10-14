@@ -1,3 +1,5 @@
+# NOTE: most helpful "thread": https://gamedev.stackexchange.com/a/61101
+
 import numpy as np
 
 from typing import Tuple
@@ -21,12 +23,21 @@ class HexGridImageProcessor(GenericGridImageProcessor):
         return (q, r)
 
     def getCoordinatesStartingPosition(self: 'HexGridImageProcessor', grid_x: int, grid_y: int) -> Tuple[int, int]:
-        # NOTE: https://www.redblobgames.com/grids/hexagons/#hex-to-pixel-offset
-        x = self.hex_size * 3/2 * grid_x
-        y = self.hex_size * np.sqrt(3) * (grid_y + 0.5 * (grid_x % 2))
+        # NOTE: https://www.redblobgames.com/grids/hexagons/#pixel-to-hex
+        conversion_matrix = np.matrix([
+            [3/2, 0],
+            [np.sqrt(3) / 2, np.sqrt(3)],
+        ])
+        
+        coordinates_matrix = np.matrix([
+            [grid_x],
+            [grid_y],
+        ])
+        
+        result = self.hex_size * conversion_matrix @ coordinates_matrix
 
-        return (int(x), int(y))
-
+        return int(result[0, 0]), int(result[1, 0])
+    
     def drawGridElement(self: 'HexGridImageProcessor', context: Context, pos_x: int, pos_y: int, color: Tuple[int, int, int]) -> None:
         hexagon_vertices = []
         for i in range(6):
