@@ -34,6 +34,8 @@ DEFAULT_PIXELS_PROCESSORS = "frequent"
 
 DEFAULT_SIZE = 10
 
+DEFAULT_OUTPUT_PATH = "./"
+
 def main():
     parser = argparse.ArgumentParser(
         prog="Image Enhancer",
@@ -44,6 +46,8 @@ def main():
     parser.add_argument("-g", "--grid", type=str, choices=image_processors.keys(), default=DEFAULT_IMAGE_PROCESSOR)
     parser.add_argument("-p", "--pixels", type=str, choices=pixels_processors.keys(), default=DEFAULT_PIXELS_PROCESSORS)
     parser.add_argument("-s", "--size", type=int, default=DEFAULT_SIZE)
+    parser.add_argument("-o", "--output-directory", "--output_directory", type=str, default=DEFAULT_OUTPUT_PATH)
+    parser.add_argument("-v", "--verbose", action="store_true")
     
     raw_arguments = sys.argv[1:]
     
@@ -53,8 +57,11 @@ def main():
     image_processor = arguments.grid
     pixels_processor = arguments.pixels
     size = arguments.size
+    output_directory = arguments.output_directory
+    verbose = arguments.verbose
     
-    print(f"[image-enhancer]: {arguments}")
+    if verbose:
+        print(f"[image-enhancer]: {arguments}")
     
     if size < 1 or size > 100:
         print(f"[image-enhancer](error): the size '{size}' is not valid. It must be between 1 and 100.")
@@ -63,8 +70,13 @@ def main():
     if not os.path.isfile(image_path):
         print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
         sys.exit(1)
+    
+    if not os.path.isdir(output_directory):
+        print(f"[image-enhancer](error): the provided output path '{output_directory}' is not a valid directory.")
+        sys.exit(1)
         
-    print("[image-enhancer]: welcome to the program!")
+    if verbose:
+        print("[image-enhancer]: welcome to the program!")
     
     image = load_image(image_path)
     
@@ -90,17 +102,20 @@ def main():
             
             grid_elements[key].append((x, y))
                 
-    print(f"[image-enhancer](image-width): {image_width}")
-    print(f"[image-enhancer](image-height): {image_height}")
-    
-    print(f"[image-enhancer](number-of-pixels): {image_height * image_width}")
-    
-    print(f"[image-enhancer](number-of-grid_elements): {len(grid_elements.keys())}")
-    
+    if verbose:
+        print(f"[image-enhancer](image-width): {image_width}")
+        print(f"[image-enhancer](image-height): {image_height}")
+        
+        print(f"[image-enhancer](number-of-pixels): {image_height * image_width}")
+        
+        print(f"[image-enhancer](number-of-grid_elements): {len(grid_elements.keys())}")
+        
     grid_image_processor.enableStrokeColor()
 
+    image_output_path = os.path.join(output_directory, image_name + ".svg")
+
     # NOTE: image reconstruction
-    with cairo.SVGSurface(f"{image_name}.svg", image_width, image_height) as surface: 
+    with cairo.SVGSurface(image_output_path, image_width, image_height) as surface: 
         context = cairo.Context(surface)
             
         context.set_source_rgb(255, 255, 255)
@@ -118,8 +133,6 @@ def main():
             color = image_pixels_processor.getRGBColorFromPixels(pixels)
             
             grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
-
-        surface.write_to_png(f"{image_name}.svg")
     
 if __name__ == "__main__":
     main()
