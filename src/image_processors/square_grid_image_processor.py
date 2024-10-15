@@ -3,8 +3,8 @@ This module contains the SquareGridImageProcessor class, which is used to proces
 """
 
 from typing import Tuple
-from cairo import Context
 
+from output_builders.generic_output_builder import GenericOutputBuilder
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 class SquareGridImageProcessor(GenericGridImageProcessor):
@@ -51,7 +51,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         
         return (grid_x * self.square_size, grid_y * self.square_size)
 
-    def drawGridElementAt(self: 'SquareGridImageProcessor', context: Context, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
+    def drawGridElementAt(self: 'SquareGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
         """
         Draws a grid element at the specified position with the given color.
         
@@ -62,10 +62,4 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         """
         x, y = grid_element_position
         
-        context.rectangle(x, y, self.square_size, self.square_size)
-        
-        context.set_source_rgb(color[0] / 255, color[1] / 255, color[2] / 255)
-        
-        context.fill_preserve()
-        
-        context.stroke()
+        context.add_rectangle(x, y, self.square_size, color)

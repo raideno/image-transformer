@@ -5,8 +5,9 @@ between pixel and grid coordinates, and to draw grid elements on a given context
 """
 
 from typing import Tuple
-from cairo import Context
 from abc import ABC, abstractmethod
+
+from output_builders.generic_output_builder import GenericOutputBuilder
 
 class GenericGridImageProcessor(ABC):
     """
@@ -42,12 +43,12 @@ class GenericGridImageProcessor(ABC):
         pass
     
     @abstractmethod
-    def drawGridElementAt(self: 'GenericGridImageProcessor', context: Context, grid_element_position: Tuple[int, ...], color: Tuple[int, int, int]) -> None:
+    def drawGridElementAt(self: 'GenericGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, ...], color: Tuple[int, int, int]) -> None:
         """
         Draw a grid element at the specified grid coordinates.
 
         Parameters:
-            context (Context): The drawing context.
+            context (GenericOutputBuilder): The drawing context.
             grid_element_position (Tuple[int, ...]): The position of the grid element in grid coordinates.
             color (Tuple[int, int, int]): The color to use for drawing the grid element, as an RGB tuple.
 

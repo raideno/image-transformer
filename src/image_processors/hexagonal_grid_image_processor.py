@@ -7,8 +7,8 @@ and calculate hexagon vertices.
 import numpy as np
 
 from typing import Tuple
-from cairo import Context
 
+from output_builders.generic_output_builder import GenericOutputBuilder
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 # NOTE: using offset coordinates - odd-q vertical layout (pointy-topped hexagons)
@@ -84,58 +84,15 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
 
         return (result[0, 0], result[1, 0])
     
-    def drawGridElementAt(self, context: Context, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
+    def drawGridElementAt(self, context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
         """
         Draws a hexagonal grid element at the specified grid coordinates.
         
         Parameters:
-            context (Context): The Cairo context to draw on.
+            context (GenericOutputBuilder): The Cairo context to draw on.
             grid_element_position (Tuple[int, int]): The grid coordinates (q, r).
             color (Tuple[int, int, int]): The color of the hexagon in RGB format.
         """
         q, r = grid_element_position
         
-        hexagon_vertices = self.__calculate_hexagon_vertices(q, r, self.hexagon_size)
-
-        self.__draw_hexagon(context, hexagon_vertices)
-
-        context.set_source_rgb(color[0] / 255, color[1] / 255, color[2] / 255)
-        context.fill_preserve()
-        
-        context.stroke()
-    
-    @staticmethod
-    def __draw_hexagon(context: Context, hexagon_vertices: list[Tuple[float, float]]):
-        """
-        Draws a hexagon using the provided vertices.
-        
-        Parameters:
-            context (Context): The Cairo context to draw on.
-            hexagon_vertices (list[Tuple[float, float]]): The vertices of the hexagon.
-        """
-        context.move_to(*hexagon_vertices[0])
-        
-        for vertex in hexagon_vertices[1:]:
-            context.line_to(*vertex)
-        context.close_path()
-    
-    @staticmethod
-    def __calculate_hexagon_vertices(q: int, r: int, hexagon_size: int) -> list[Tuple[float, float]]:
-        """
-        Calculates the vertices of a hexagon given its grid coordinates and size.
-        
-        Parameters:
-            q (int): The q-coordinate in the grid.
-            r (int): The r-coordinate in the grid.
-            hexagon_size (int): The size of the hexagon.
-        
-        Returns:
-            list[Tuple[float, float]]: The vertices of the hexagon.
-        """
-        hexagon_vertices = []
-        for i in range(6):
-            angle = np.pi / 3 * i
-            x_vertex = q + hexagon_size * np.cos(angle)
-            y_vertex = r + hexagon_size * np.sin(angle)
-            hexagon_vertices.append((x_vertex, y_vertex))
-        return hexagon_vertices
+        context.add_hexagon(q, r, self.hexagon_size, color)
