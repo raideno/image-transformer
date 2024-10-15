@@ -9,59 +9,74 @@ from image_processors.generic_grid_image_processor import GenericGridImageProces
 # NOTE: using offset coordinates - odd-q vertical layout (pointy-topped hexagons)
 # NOTE: https://www.redblobgames.com/grids/hexagons/#coordinates-offset
 
-class HexGridImageProcessor(GenericGridImageProcessor):
-    def __init__(self, hex_size: int):
-        self.hex_size = hex_size
-        self.color_stroke: bool = False
+class HexagonalGridImageProcessor(GenericGridImageProcessor):
+    def __init__(self, hexagon_size: int):
+        self.hexagon_size = hexagon_size
 
-    def convertToGridCoordinatesFromPixelCoordinates(self: 'HexGridImageProcessor', x: int, y: int) -> Tuple[int, int]:
-        # NOTE: https://www.redblobgames.com/grids/hexagons/#hex-to-pixel-offset
-        q = int(round((2 / 3 * x) / self.hex_size))
-        r = int(round((-1 / 3 * x + np.sqrt(3) / 3 * y) / self.hex_size))
-        # r = int(round((y - (q % 2) * (self.hex_size * np.sqrt(3) / 2)) / (self.hex_size * np.sqrt(3))))
+    def fromPixelCoordinatesToGridCoordinates(self: 'HexagonalGridImageProcessor', x: int, y: int) -> Tuple[int, int]:
+        # NOTE: https://www.redblobgames.com/grids/hexagons/#pixel-to-hex
+
+        pixel_matrix = np.matrix([
+            [x],
+            [y],
+        ])
+        
+        conversion_matrix = np.matrix([
+            [2 / 3, 0],
+            [-1 / 3, np.sqrt(3) / 3],
+        ])
+        
+        result = conversion_matrix @ pixel_matrix / self.hexagon_size
+        
+        q = int(round(result[0, 0]))
+        r = int(round(result[1, 0]))
 
         return (q, r)
 
-    def getCoordinatesStartingPosition(self: 'HexGridImageProcessor', grid_x: int, grid_y: int) -> Tuple[int, int]:
+    def fromGridCoordinatesToCenterInPixelCoordinates(self: 'HexagonalGridImageProcessor', grid_element_position: Tuple[int, int]) -> Tuple[int, int]:
         # NOTE: https://www.redblobgames.com/grids/hexagons/#pixel-to-hex
+        q, r = grid_element_position
+        
         conversion_matrix = np.matrix([
             [3/2, 0],
             [np.sqrt(3) / 2, np.sqrt(3)],
         ])
         
         coordinates_matrix = np.matrix([
-            [grid_x],
-            [grid_y],
+            [q],
+            [r],
         ])
         
-        result = self.hex_size * conversion_matrix @ coordinates_matrix
+        result = np.round(self.hexagon_size * conversion_matrix @ coordinates_matrix).astype(int)
 
-        return int(result[0, 0]), int(result[1, 0])
+        return (result[0, 0], result[1, 0])
     
-    def drawGridElement(self: 'HexGridImageProcessor', context: Context, pos_x: int, pos_y: int, color: Tuple[int, int, int]) -> None:
-        hexagon_vertices = []
-        for i in range(6):
-            angle = np.pi / 3 * i  # 60-degree increments (for pointy-topped hexagons)
-            x_vertex = pos_x + self.hex_size * np.cos(angle)
-            y_vertex = pos_y + self.hex_size * np.sin(angle)
-            hexagon_vertices.append((x_vertex, y_vertex))
+    def drawGridElementAt(self: 'HexagonalGridImageProcessor', context: Context, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
+        q, r = grid_element_position
+        
+        hexagon_vertices = self.__calculate_hexagon_vertices(q, r, self.hexagon_size)
 
-        # Draw the hexagon using the calculated vertices
+        self.__draw_hexagon(context, hexagon_vertices)
+
+        context.set_source_rgb(color[0] / 255, color[1] / 255, color[2] / 255)
+        context.fill_preserve()
+        
+        context.stroke()
+    
+    @staticmethod
+    def __draw_hexagon(context: Context, hexagon_vertices: list[Tuple[float, float]]):
         context.move_to(*hexagon_vertices[0])
+        
         for vertex in hexagon_vertices[1:]:
             context.line_to(*vertex)
-        context.close_path()  # Close the hexagon shape
-
-        # Set the fill color and stroke the outline
-        context.set_source_rgb(color[0] / 255, color[1] / 255, color[2] / 255)  # Normalize to [0, 1] for Cairo
-        context.fill_preserve()
-        context.stroke()
-        
-    def enableStrokeColor(self: 'HexGridImageProcessor') -> None:
-        self.color_stroke = True
-        
-    def disableStrokeColor(self: 'HexGridImageProcessor') -> None:
-        self.color_stroke = False
-        
-    def toggleStrokeColor(self: 'HexGridImageProcessor') -> None:
-        self.color_stroke = not self.color_stroke
+        context.close_path()
+    
+    @staticmethod
+    def __calculate_hexagon_vertices(q: int, r: int, hexagon_size: int) -> list[Tuple[float, float]]:
+        hexagon_vertices = []
+        for i in range(6):
+            angle = np.pi / 3 * i
+            x_vertex = q + hexagon_size * np.cos(angle)
+            y_vertex = r + hexagon_size * np.sin(angle)
+            hexagon_vertices.append((x_vertex, y_vertex))
+        return hexagon_vertices
