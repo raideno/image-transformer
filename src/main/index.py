@@ -1,32 +1,35 @@
 import os
 import sys
 import cairo
-import tomllib
-import argparse
 
 import numpy as np
 
 from image_loader.loader import load_image
+
+from utils.arguments_parser import arguments_parser_factory
 from utils.configurations_loader import load_configurations
+from utils.arguments_validator import validate_and_parse_arguments
 
 from pixels_processors.random_pixels_processor import RandomPixelsProcessor
 from pixels_processors.average_pixels_processor import AveragePixelsProcessor
-from pixels_processors.frequent_pixels_processor import MostFrequentPixelsProcessor
+from pixels_processors.most_frequent_pixels_processor import MostFrequentPixelsProcessor
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
-from image_processors.hex_grid_image_processor import HexGridImageProcessor
+from image_processors.triangle_grid_image_processor import TriangularGridImageProcessor
+from image_processors.hexagonal_grid_image_processor import HexagonalGridImageProcessor
 from image_processors.square_grid_image_processor import SquareGridImageProcessor
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 image_processors: dict[str, GenericGridImageProcessor] = {
-    "hexagonal": HexGridImageProcessor,
+    "triangle": TriangularGridImageProcessor,
+    "hexagonal": HexagonalGridImageProcessor,
     "square": SquareGridImageProcessor,
 }
 
 pixels_processors: dict[str, GenericPixelsProcessor] = {
     "random": RandomPixelsProcessor,
     "average": AveragePixelsProcessor,
-    "frequent": MostFrequentPixelsProcessor,
+    "most-frequent": MostFrequentPixelsProcessor,
 }
 
 CONFIGURATION_FILE_PATH = "configurations.toml"
@@ -34,21 +37,19 @@ CONFIGURATION_FILE_PATH = "configurations.toml"
 configurations = load_configurations(CONFIGURATION_FILE_PATH)
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        prog="Image Enhancer",
-        description="Transform your images into svg",
+    
+    arguments_parser = arguments_parser_factory(
+        image_processors_keys=image_processors.keys(),
+        pixels_processors_keys=pixels_processors.keys(),
+        configurations=configurations    
     )
-
-    parser.add_argument("image_path", type=str)
-    parser.add_argument("-g", "--grid", type=str, choices=image_processors.keys(), default=configurations["defaults"]["image-processor"])
-    parser.add_argument("-p", "--pixels", type=str, choices=pixels_processors.keys(), default=configurations["defaults"]["pixels-processor"])
-    parser.add_argument("-s", "--size", type=int, default=configurations["defaults"]["size"])
-    parser.add_argument("-o", "--output-directory", "--output_directory", type=str, default=configurations["defaults"]["output-directory"])
-    parser.add_argument("-v", "--verbose", action="store_true")
     
     raw_arguments = sys.argv[1:]
     
-    arguments = parser.parse_args(raw_arguments)
+    arguments = validate_and_parse_arguments(
+        raw_arguments=raw_arguments,
+        arguments_parser=arguments_parser
+    )
     
     image_path = arguments.image_path
     image_processor = arguments.grid
@@ -59,20 +60,6 @@ def main() -> None:
     
     if verbose:
         print(f"[image-enhancer]: {arguments}")
-    
-    if size < 1 or size > 100:
-        print(f"[image-enhancer](error): the size '{size}' is not valid. It must be between 1 and 100.")
-        sys.exit(1)
-    
-    if not os.path.isfile(image_path):
-        print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
-        sys.exit(1)
-    
-    if not os.path.isdir(output_directory):
-        print(f"[image-enhancer](error): the provided output path '{output_directory}' is not a valid directory.")
-        sys.exit(1)
-        
-    if verbose:
         print("[image-enhancer]: welcome to the program!")
     
     image = load_image(image_path)
@@ -93,11 +80,11 @@ def main() -> None:
     # NOTE: image analysis
     for y in range(0, image_height):
         for x in range(0, image_width):
-            key = grid_image_processor.convertToGridCoordinatesFromPixelCoordinates(x, y)
+            grid_element_position = grid_image_processor.fromPixelCoordinatesToGridCoordinates(x, y)
 
-            grid_elements.setdefault(key, [])
+            grid_elements.setdefault(grid_element_position, [])
             
-            grid_elements[key].append((x, y))
+            grid_elements[grid_element_position].append((x, y))
                 
     if verbose:
         print(f"[image-enhancer](image-width): {image_width}")
@@ -106,8 +93,6 @@ def main() -> None:
         print(f"[image-enhancer](number-of-pixels): {image_height * image_width}")
         
         print(f"[image-enhancer](number-of-grid_elements): {len(grid_elements.keys())}")
-        
-    grid_image_processor.enableStrokeColor()
 
     image_output_path = os.path.join(output_directory, image_name + ".svg")
 
@@ -119,17 +104,17 @@ def main() -> None:
         context.paint()
         
         for grid_element in grid_elements:
-            grid_element_x, grid_element_y = grid_element
+            grid_element_position = grid_element
             
-            pixels_coordinates = grid_elements[grid_element]
+            pixels_coordinates = grid_elements[grid_element_position]
             
             pixels = np.array([image_array[y, x] for x, y in pixels_coordinates])
             
-            pos_x, pos_y = grid_image_processor.getCoordinatesStartingPosition(grid_element_x, grid_element_y)
+            grid_element_position_on_pixels_plane = grid_image_processor.fromGridCoordinatesToCenterInPixelCoordinates(grid_element_position)
                         
             color = image_pixels_processor.getRGBColorFromPixels(pixels)
             
-            grid_image_processor.drawGridElement(context, pos_x, pos_y, color)
+            grid_image_processor.drawGridElementAt(context, grid_element_position_on_pixels_plane, color)
     
 if __name__ == "__main__":
     main()
