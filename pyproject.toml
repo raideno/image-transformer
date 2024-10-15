@@ -7,7 +7,6 @@ readme = "README.md"
 packages = [
     {include = "main", from = "src"},
     {include = "utils", from = "src"},
-    {include = "image_loader", from = "src"},
     {include = "image_processors", from = "src"},
     {include = "pixels_processors", from = "src"}
 ]
