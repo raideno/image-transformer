@@ -1,3 +1,8 @@
+"""
+This module provides the main entry point for the image-enhancer program. It parses command-line arguments,
+loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.
+"""
+
 import os
 import sys
 import cairo
@@ -35,7 +40,26 @@ CONFIGURATION_FILE_PATH = "configurations.toml"
 configurations = load_configurations(CONFIGURATION_FILE_PATH)
 
 def main() -> None:
+    """
+    Main function to run the image-enhancer program.
+    This function performs the following steps:
     
+    1. Parses command-line arguments to get the image path, processors, size, output directory, and verbosity.
+    2. Loads the image from the specified path.
+    3. Analyzes the image to divide it into grid elements based on the specified grid processor.
+    4. Processes the pixels within each grid element using the specified pixel processor.
+    5. Outputs the processed image as an SVG file in the specified output directory.
+    
+    Command-line arguments:
+    - image_path: Path to the input image file.
+    - grid: Key for the grid image processor to use.
+    - pixels: Key for the pixels processor to use.
+    - size: Size parameter for the grid image processor.
+    - output_directory: Directory to save the output SVG file.
+    - verbose: Flag to enable verbose logging.
+    
+    The function prints various details about the image and processing steps if verbose mode is enabled.
+    """
     arguments_parser = arguments_parser_factory(
         image_processors_keys=image_processors.keys(),
         pixels_processors_keys=pixels_processors.keys(),
