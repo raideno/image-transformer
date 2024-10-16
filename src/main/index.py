@@ -5,10 +5,10 @@ loads an image, processes it using specified image and pixel processors, and out
 
 import os
 import sys
-import cairo
 
 import numpy as np
 
+from alive_progress import alive_bar
 
 from utils.loader import load_image
 from utils.arguments_parser import arguments_parser_factory
@@ -113,14 +113,27 @@ def main() -> None:
     
     grid_elements: dict[tuple[int, int], list[tuple[int, int]]] = {}
     
-    # NOTE: image analysis
-    for y in range(0, image_height):
-        for x in range(0, image_width):
-            grid_element_position = grid_image_processor.fromPixelCoordinatesToGridCoordinates(x, y)
+    if verbose:
+        with alive_bar(total=image_height * image_width, title="[image-enhancer](pixels-processing):") as progress_alive_bar:
+            # NOTE: image analysis
+            for y in range(0, image_height):
+                for x in range(0, image_width):
+                    grid_element_position = grid_image_processor.fromPixelCoordinatesToGridCoordinates(x, y)
 
-            grid_elements.setdefault(grid_element_position, [])
-            
-            grid_elements[grid_element_position].append((x, y))
+                    grid_elements.setdefault(grid_element_position, [])
+                    
+                    grid_elements[grid_element_position].append((x, y))
+                    
+                    progress_alive_bar()
+    else:
+        # NOTE: image analysis
+        for y in range(0, image_height):
+            for x in range(0, image_width):
+                grid_element_position = grid_image_processor.fromPixelCoordinatesToGridCoordinates(x, y)
+
+                grid_elements.setdefault(grid_element_position, [])
+                
+                grid_elements[grid_element_position].append((x, y))
                 
     if verbose:
         print(f"[image-enhancer](image-width): {image_width}")
@@ -130,21 +143,38 @@ def main() -> None:
         
         print(f"[image-enhancer](number-of-grid_elements): {len(grid_elements.keys())}")
 
-
-    # NOTE: image reconstruction
-    for grid_element in grid_elements:
-        grid_element_position = grid_element
-        
-        pixels_coordinates = grid_elements[grid_element_position]
-        
-        pixels = np.array([image_array[y, x] for x, y in pixels_coordinates])
-        
-        grid_element_position_on_pixels_plane = grid_image_processor.fromGridCoordinatesToCenterInPixelCoordinates(grid_element_position)
-                    
-        color = image_pixels_processor.getRGBColorFromPixels(pixels)
-        
-        grid_image_processor.drawGridElementAt(output_builder, grid_element_position_on_pixels_plane, color)
-        
+    if verbose:
+        with alive_bar(len(grid_elements), title="[image-enhancer](grid-reconstruction):") as progress_alive_bar:
+            # NOTE: image reconstruction
+            for grid_element in grid_elements:
+                grid_element_position = grid_element
+                
+                pixels_coordinates = grid_elements[grid_element_position]
+                
+                pixels = np.array([image_array[y, x] for x, y in pixels_coordinates])
+                
+                grid_element_position_on_pixels_plane = grid_image_processor.fromGridCoordinatesToCenterInPixelCoordinates(grid_element_position)
+                            
+                color = image_pixels_processor.getRGBColorFromPixels(pixels)
+                
+                grid_image_processor.drawGridElementAt(output_builder, grid_element_position_on_pixels_plane, color)
+                
+                progress_alive_bar()
+    else:
+        # NOTE: image reconstruction
+        for grid_element in grid_elements:
+            grid_element_position = grid_element
+            
+            pixels_coordinates = grid_elements[grid_element_position]
+            
+            pixels = np.array([image_array[y, x] for x, y in pixels_coordinates])
+            
+            grid_element_position_on_pixels_plane = grid_image_processor.fromGridCoordinatesToCenterInPixelCoordinates(grid_element_position)
+                        
+            color = image_pixels_processor.getRGBColorFromPixels(pixels)
+            
+            grid_image_processor.drawGridElementAt(output_builder, grid_element_position_on_pixels_plane, color)
+            
     output_builder.save()
     
 if __name__ == "__main__":
