@@ -63,3 +63,19 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         x, y = grid_element_position
         
         context.add_rectangle(x, y, self.square_size, color)
+        
+    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+        """
+        Approximates the number of grid elements that can fit in the given width and height.
+        
+        Parameters:
+            width (int): The width of the area in pixels.
+            height (int): The height of the area in pixels.
+        
+        Returns:
+            int: The approximate number of grid elements.
+        """
+        num_elements_x = width // self.square_size
+        num_elements_y = height // self.square_size
+        
+        return num_elements_x * num_elements_y

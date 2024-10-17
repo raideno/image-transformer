@@ -96,3 +96,22 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
         q, r = grid_element_position
         
         context.add_hexagon(q, r, self.hexagon_size, color)
+        
+    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+        """
+        Approximates the number of hexagonal grid elements that can fit in the given width and height.
+        
+        Parameters:
+            width (int): The width of the area in pixels.
+            height (int): The height of the area in pixels.
+        
+        Returns:
+            int: The approximate number of hexagonal grid elements.
+        """
+        hex_height = np.sqrt(3) * self.hexagon_size
+        hex_width = 2 * self.hexagon_size
+        
+        num_hexagons_width = width / (3/2 * self.hexagon_size)
+        num_hexagons_height = height / hex_height
+        
+        return int(num_hexagons_width * num_hexagons_height)

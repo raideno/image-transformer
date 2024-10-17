@@ -56,3 +56,17 @@ class GenericGridImageProcessor(ABC):
             None
         """
         pass
+    
+    @abstractmethod
+    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+        """
+        Abstract method to approximate the number of grid elements in an image.
+
+        Args:
+            width (int): The width of the image.
+            height (int): The height of the image.
+
+        Returns:
+            int: The approximated number of grid elements.
+        """
+        pass
