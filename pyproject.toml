@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "image-transformer"
-version = "0.1.1"
+version = "0.2"
 description = "A Python project for enhancing images using various processing techniques."
 authors = ["raiden <nadirkichou@hotmail.fr>"]
 readme = "README.md"
@@ -16,7 +16,7 @@ pycairo = "^1.27.0"
 alive-progress = "^3.1.5"
 
 [tool.poetry.scripts]
-main = "image_transformer.index:main"
+image-transformer = "image_transformer.index:main"
 
 [tool.poetry.group.dev.dependencies]
 sphinx = "^8.1.3"
