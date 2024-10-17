@@ -59,6 +59,33 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span> <span class="o">=</span> <span class="n">cairo</span><span class="o">.</span><span class="n">SVGSurface</span><span class="p">(</span><span class="n">file_output_path</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="c1"># pylint: disable=no-member</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">cairo</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface</span><span class="p">)</span> <span class="c1"># pylint: disable=no-member</span>
 
+<div class="viewcode-block" id="CairoSvgOutputBuilder.add_polygon">
+<a class="viewcode-back" href="../../../image_transformer.output_builders.html#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_polygon">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;CairoSvgOutputBuilder&#39;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a polygon to the Cairo canvas based on the provided vertices and fills it with the specified color.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            vertices (list[Tuple[float, float]]): A list of (x, y) coordinates for the polygon&#39;s vertices.</span>
+<span class="sd">            color (Tuple[int, int, int]): The color of the polygon in RGB format (0-255 for each component).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">vertices</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="o">*</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">line_to</span><span class="p">(</span><span class="o">*</span><span class="n">vertex</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">close_path</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">set_source_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">255</span><span class="p">,</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">fill_preserve</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">stroke</span><span class="p">()</span></div>
+
+
 <div class="viewcode-block" id="CairoSvgOutputBuilder.add_rectangle">
 <a class="viewcode-back" href="../../../image_transformer.output_builders.html#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_rectangle">[docs]</a>
     <span class="k">def</span> <span class="nf">add_rectangle</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;CairoSvgOutputBuilder&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>

@@ -61,6 +61,28 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">file_output_path</span> <span class="o">=</span> <span class="n">file_output_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">svg_content</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">&quot; height=&quot;</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">&quot;&gt;&#39;</span><span class="p">]</span>
 
+<div class="viewcode-block" id="HandmadeSvgOutputBuilder.add_polygon">
+<a class="viewcode-back" href="../../../image_transformer.output_builders.html#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_polygon">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;HandmadeSvgOutputBuilder&#39;</span><span class="p">,</span> <span class="n">vertices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a polygon to the SVG canvas based on the provided vertices and fill it with the specified color.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            vertices (list[Tuple[float, float]]): A list of (x, y) coordinates for the polygon&#39;s vertices.</span>
+<span class="sd">            color (Tuple[int, int, int]): The color of the polygon in RGB format (0-255 for each component).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">vertices</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">points_str</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">px</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">py</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">])</span>
+
+        <span class="n">rgba_color</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;rgba(</span><span class="si">{</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="n">polygon_element</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;polygon points=&quot;</span><span class="si">{</span><span class="n">points_str</span><span class="si">}</span><span class="s1">&quot; fill=&quot;</span><span class="si">{</span><span class="n">rgba_color</span><span class="si">}</span><span class="s1">&quot; stroke=&quot;none&quot; /&gt;&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">svg_content</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polygon_element</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="HandmadeSvgOutputBuilder.add_rectangle">
 <a class="viewcode-back" href="../../../image_transformer.output_builders.html#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_rectangle">[docs]</a>
     <span class="k">def</span> <span class="nf">add_rectangle</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;HandmadeSvgOutputBuilder&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>

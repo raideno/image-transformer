@@ -51,6 +51,20 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_polygon">
+<span class="sig-name descname"><span class="pre">add_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/output_builders/cairo_svg_output_builder.html#CairoSvgOutputBuilder.add_polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_polygon" title="Link to this definition">¶</a></dt>
+<dd><p>Adds a polygon to the Cairo canvas based on the provided vertices and fills it with the specified color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>list</em><em>[</em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>]</em>) – A list of (x, y) coordinates for the polygon’s vertices.</p></li>
+<li><p><strong>color</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – The color of the polygon in RGB format (0-255 for each component).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_rectangle">
 <span class="sig-name descname"><span class="pre">add_rectangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/output_builders/cairo_svg_output_builder.html#CairoSvgOutputBuilder.add_rectangle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_rectangle" title="Link to this definition">¶</a></dt>
 <dd><p>Add a square to the Cairo canvas at the specified position, size, and color.</p>
@@ -87,6 +101,20 @@ rendered output to a file.</p>
 <li><p><strong>y</strong> (<em>int</em>) – The y-coordinate of the top-left point of the hexagon’s bounding box.</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – The distance between two opposite sides (the width) of the hexagon.</p></li>
 <li><p><strong>color</strong> (<em>str</em>) – The fill color of the hexagon.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.add_polygon">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/output_builders/generic_output_builder.html#GenericOutputBuilder.add_polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.add_polygon" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract method to add a polygon to the output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>list</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – A list of tuples representing the vertices of the polygon.</p></li>
+<li><p><strong>color</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – A tuple representing the RGB color of the polygon.</p></li>
 </ul>
 </dd>
 </dl>
@@ -132,6 +160,20 @@ and flat-topped hexagons. The generated SVG can then be saved to a file.</p>
 <dt class="sig sig-object py" id="image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_hexagon">
 <span class="sig-name descname"><span class="pre">add_hexagon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/output_builders/handmade_svg_output_builder.html#HandmadeSvgOutputBuilder.add_hexagon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_hexagon" title="Link to this definition">¶</a></dt>
 <dd><p>Add a flat-topped hexagon to the SVG at the specified position, size, and colors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_polygon">
+<span class="sig-name descname"><span class="pre">add_polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/output_builders/handmade_svg_output_builder.html#HandmadeSvgOutputBuilder.add_polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_polygon" title="Link to this definition">¶</a></dt>
+<dd><p>Add a polygon to the SVG canvas based on the provided vertices and fill it with the specified color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>list</em><em>[</em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>]</em>) – A list of (x, y) coordinates for the polygon’s vertices.</p></li>
+<li><p><strong>color</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – The color of the polygon in RGB format (0-255 for each component).</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

@@ -28,6 +28,14 @@ image\_transformer.image\_processors.square\_grid\_image\_processor module
    :undoc-members:
    :show-inheritance:
 
+image\_transformer.image\_processors.triangle\_grid\_image\_processor module
+----------------------------------------------------------------------------
+
+.. automodule:: image_transformer.image_processors.triangle_grid_image_processor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
