@@ -10,16 +10,11 @@ from importlib import resources
 
 from alive_progress import alive_bar
 
-from image_transformer.constants import image_processors
-from image_transformer.constants import pixels_processors
-from image_transformer.constants import outputs_builders
+from image_transformer.constants import image_processors, pixels_processors, outputs_builders
 
-from image_transformer.image_transformer import ImageTransformer
+from image_transformer import ImageTransformer
 
-from image_transformer.utils.loader import load_image
-from image_transformer.utils.arguments_parser import arguments_parser_factory
-from image_transformer.utils.configurations_loader import load_configurations
-from image_transformer.utils.arguments_validator import validate_and_parse_arguments
+from image_transformer.utils import load_image, arguments_parser_factory, load_configurations, validate_and_parse_arguments
 
 from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
 

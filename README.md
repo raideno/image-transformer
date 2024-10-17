@@ -32,9 +32,9 @@ Example usage:
 from PIL import Image
 
 from image_transformer import ImageTransformer
-from image_transformer.output_builders.cairo_svg_output_builder import CairoSvgOutputBuilder
-from image_transformer.image_processors.hexagonal_grid_image_processor import HexagonalGridImageProcessor
-from image_transformer.pixels_processors.most_frequent_pixels_processor import MostFrequentPixelsProcessor
+from image_transformer.output_builders import CairoSvgOutputBuilder
+from image_transformer.image_processors import HexagonalGridImageProcessor
+from image_transformer.pixels_processors import MostFrequentPixelsProcessor
 
 def main():
     hexagon_size = 13

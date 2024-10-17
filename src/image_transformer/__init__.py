@@ -3,4 +3,4 @@ This module initializes the image_transformer package by importing all functions
 from the image_transformer module.
 """
 
-from .image_transformer import *
+from .image_transformer import ImageTransformer
