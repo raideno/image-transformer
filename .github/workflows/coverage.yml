@@ -6,7 +6,7 @@ permissions:
   contents: write
 
 jobs:
-  coverage:
+  build-coverage-badge:
     runs-on: ubuntu-latest
 
     steps:

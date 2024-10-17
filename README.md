@@ -1,4 +1,6 @@
 ![Coverage](coverage.svg)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
+![Poetry](https://img.shields.io/badge/Poetry-1.1.0%2B-blue)
 
 ---
 
