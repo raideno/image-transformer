@@ -3,9 +3,9 @@ This module contains the AveragePixelsProcessor class which is used to calculate
 the average RGB color from a given set of pixels.
 """
 
-import numpy as np
-
 from typing import Tuple
+
+import numpy as np
 
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
@@ -16,7 +16,7 @@ class AveragePixelsProcessor(GenericPixelsProcessor):
     A class used to process pixels and calculate the average RGB color.
     """
 
-    def getRGBColorFromPixels(self: 'AveragePixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
+    def get_rgb_color_from_pixels(self: 'AveragePixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
         """
         Calculates the average RGB color from the given pixels.
 

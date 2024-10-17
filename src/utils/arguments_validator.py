@@ -23,11 +23,11 @@ def validate_and_parse_arguments(raw_arguments: list[str], arguments_parser: arg
     arguments = arguments_parser.parse_args(raw_arguments)
     
     image_path = arguments.image_path
-    image_processor = arguments.grid
-    pixels_processor = arguments.pixels
+    _image_processor = arguments.grid
+    _pixels_processor = arguments.pixels
     size = arguments.size
     output_directory = arguments.output_directory
-    verbose = arguments.verbose
+    _verbose = arguments.verbose
     
     if size < 1 or size > 100:
         print(f"[image-enhancer](error): the size '{size}' is not valid. It must be between 1 and 100.")

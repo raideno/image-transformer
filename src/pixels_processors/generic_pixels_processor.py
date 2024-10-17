@@ -3,10 +3,10 @@ This module contains the definition of the GenericPixelsProcessor abstract base 
 which provides an interface for processing pixel data to extract RGB color information.
 """
 
-import numpy as np
-
 from typing import Tuple
 from abc import ABC, abstractmethod
+
+import numpy as np
 
 class GenericPixelsProcessor(ABC):
     """
@@ -14,7 +14,7 @@ class GenericPixelsProcessor(ABC):
     """
 
     @abstractmethod
-    def getRGBColorFromPixels(self: 'GenericPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
+    def get_rgb_color_from_pixels(self: 'GenericPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
         """
         Extracts the RGB color from the given pixel data.
 
@@ -24,4 +24,3 @@ class GenericPixelsProcessor(ABC):
         Returns:
             Tuple[int, int, int]: A tuple containing the RGB color values.
         """
-        pass

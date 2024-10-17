@@ -2,17 +2,19 @@
 This module contains the RandomPixelsProcessor class, which is used to generate random RGB colors from pixel data.
 """
 
+from typing import Tuple
+
 import numpy as np
 
-from typing import Tuple
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
+
 
 class RandomPixelsProcessor(GenericPixelsProcessor):
     """
     A processor that generates random RGB colors from pixel data.
     """
 
-    def getRGBColorFromPixels(self: 'RandomPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
+    def get_rgb_color_from_pixels(self: 'RandomPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
         """
         Generate a random RGB color.
 

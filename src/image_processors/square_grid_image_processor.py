@@ -21,7 +21,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         """
         self.square_size: int = square_size
     
-    def fromPixelCoordinatesToGridCoordinates(self: 'SquareGridImageProcessor', x: int, y: int) -> Tuple[int, ...]:
+    def from_pixel_coordinates_to_grid_coordinates(self: 'SquareGridImageProcessor', x: int, y: int) -> Tuple[int, ...]:
         """
         Converts pixel coordinates to grid coordinates.
         
@@ -37,7 +37,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         
         return (square_x_coordinate, square_y_coordinate)
     
-    def fromGridCoordinatesToCenterInPixelCoordinates(self: 'SquareGridImageProcessor', grid_element_position: Tuple[int, int]) -> Tuple[int, ...]:
+    def from_grid_coordinates_to_center_in_pixel_coordinates(self: 'SquareGridImageProcessor', grid_element_position: Tuple[int, int]) -> Tuple[int, ...]:
         """
         Converts grid coordinates to the center pixel coordinates of the grid element.
         
@@ -51,7 +51,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         
         return (grid_x * self.square_size, grid_y * self.square_size)
 
-    def drawGridElementAt(self: 'SquareGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
+    def draw_grid_element_at(self: 'SquareGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
         """
         Draws a grid element at the specified position with the given color.
         
@@ -64,7 +64,7 @@ class SquareGridImageProcessor(GenericGridImageProcessor):
         
         context.add_rectangle(x, y, self.square_size, color)
         
-    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+    def approximate_number_of_grid_elements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
         """
         Approximates the number of grid elements that can fit in the given width and height.
         

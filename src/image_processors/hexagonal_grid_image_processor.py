@@ -4,9 +4,9 @@ It includes methods to convert between pixel and grid coordinates, draw grid ele
 and calculate hexagon vertices.
 """
 
-import numpy as np
-
 from typing import Tuple
+
+import numpy as np
 
 from output_builders.generic_output_builder import GenericOutputBuilder
 from image_processors.generic_grid_image_processor import GenericGridImageProcessor
@@ -28,7 +28,7 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
         """
         self.hexagon_size = hexagon_size
 
-    def fromPixelCoordinatesToGridCoordinates(self, x: int, y: int) -> Tuple[int, int]:
+    def from_pixel_coordinates_to_grid_coordinates(self, x: int, y: int) -> Tuple[int, int]:
         # NOTE: https://www.redblobgames.com/grids/hexagons/#pixel-to-hex
         """
         Converts pixel coordinates to grid coordinates.
@@ -57,7 +57,7 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
 
         return (q, r)
 
-    def fromGridCoordinatesToCenterInPixelCoordinates(self, grid_element_position: Tuple[int, int]) -> Tuple[int, int]:
+    def from_grid_coordinates_to_center_in_pixel_coordinates(self, grid_element_position: Tuple[int, int]) -> Tuple[int, int]:
         # NOTE: https://www.redblobgames.com/grids/hexagons/#pixel-to-hex
         """
         Converts grid coordinates to the center pixel coordinates.
@@ -84,7 +84,7 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
 
         return (result[0, 0], result[1, 0])
     
-    def drawGridElementAt(self, context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
+    def draw_grid_element_at(self, context: GenericOutputBuilder, grid_element_position: Tuple[int, int], color: Tuple[int, int, int]) -> None:
         """
         Draws a hexagonal grid element at the specified grid coordinates.
         
@@ -97,7 +97,7 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
         
         context.add_hexagon(q, r, self.hexagon_size, color)
         
-    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+    def approximate_number_of_grid_elements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
         """
         Approximates the number of hexagonal grid elements that can fit in the given width and height.
         
@@ -109,7 +109,7 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
             int: The approximate number of hexagonal grid elements.
         """
         hex_height = np.sqrt(3) * self.hexagon_size
-        hex_width = 2 * self.hexagon_size
+        _hex_width = 2 * self.hexagon_size
         
         num_hexagons_width = width / (3/2 * self.hexagon_size)
         num_hexagons_height = height / hex_height

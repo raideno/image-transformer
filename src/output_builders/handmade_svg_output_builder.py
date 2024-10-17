@@ -3,9 +3,10 @@ A module for generating basic SVG (Scalable Vector Graphics) files. The `SVGBuil
 class allows you to create an SVG canvas and draw simple shapes, including squares
 and flat-topped hexagons. The generated SVG can then be saved to a file.
 """
-import numpy as np
 
 from typing import Tuple
+
+import numpy as np
 
 from output_builders.generic_output_builder import GenericOutputBuilder
 
@@ -63,5 +64,5 @@ class HandmadeSvgOutputBuilder(GenericOutputBuilder):
         Save the generated SVG content to a file with the specified filename.
         """
         self.svg_content.append('</svg>')
-        with open(self.file_output_path, 'w') as f:
+        with open(self.file_output_path, 'w', encoding='utf-8') as f:
             f.write("\n".join(self.svg_content))

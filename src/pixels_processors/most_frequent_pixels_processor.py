@@ -3,19 +3,21 @@ This module contains the MostFrequentPixelsProcessor class, which is used to pro
 and determine the most frequently occurring RGB color.
 """
 
-import numpy as np
 
 from typing import Tuple
 from collections import Counter
 
+import numpy as np
+
 from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
+
 
 class MostFrequentPixelsProcessor(GenericPixelsProcessor):
     """
     A processor that identifies the most frequent RGB color from a given array of pixels.
     """
     
-    def getRGBColorFromPixels(self: 'MostFrequentPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
+    def get_rgb_color_from_pixels(self: 'MostFrequentPixelsProcessor', pixels: np.ndarray) -> Tuple[int, int, int]:
         """
         Determines the most frequent RGB color from the provided array of pixels.
 

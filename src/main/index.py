@@ -89,16 +89,16 @@ def main() -> None:
     
     # FIX: need to contain the real value
     # NOTE: the number of iterations for the second loop
-    number_of_grid_elements = grid_image_processor.approximateNumberOfGridElements(image.width, image.height)
+    number_of_grid_elements = grid_image_processor.approximate_number_of_grid_elements(image.width, image.height)
 
     if verbose:
-        print(f"[image-enhancer]: welcome to the program!")
+        print("[image-enhancer]: welcome to the program!")
         print(f"[image-enhancer](width): {image.width}")
         print(f"[image-enhancer](height): {image.height}")
         print(f"[image-enhancer](#pixels): {image.width * image.height}")
     
     with alive_bar(image.width * image.height + number_of_grid_elements, title="[image-enhancer](processing)", disable=not verbose) as progress_bar:
-        callback_function = lambda step_name, step_size: progress_bar()
+        callback_function = lambda step_name, step_size: progress_bar() # pylint: disable=not-callable
 
         image_transformer.transform_and_save(
             image_processor=grid_image_processor,

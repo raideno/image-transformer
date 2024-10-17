@@ -1,8 +1,12 @@
+"""
+This module provides an implementation of the GenericOutputBuilder interface using the Cairo library to render shapes to an SVG file.
+"""
+
+from typing import Tuple
+
 import cairo
 
 import numpy as np
-
-from typing import Tuple
 
 from output_builders.generic_output_builder import GenericOutputBuilder
 
@@ -17,9 +21,8 @@ class CairoSvgOutputBuilder(GenericOutputBuilder):
         """
         self.width = width
         self.height = height
-        # TODO: fix, it creates the file before and then fills it when calling .finish()
-        self.surface = cairo.SVGSurface(file_output_path, width, height)
-        self.context = cairo.Context(self.surface)
+        self.surface = cairo.SVGSurface(file_output_path, width, height) # pylint: disable=no-member
+        self.context = cairo.Context(self.surface) # pylint: disable=no-member
 
     def add_rectangle(self: 'CairoSvgOutputBuilder', x: int, y: int, size: int, color: Tuple[int, int, int]):
         """

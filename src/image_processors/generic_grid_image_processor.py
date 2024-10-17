@@ -16,7 +16,7 @@ class GenericGridImageProcessor(ABC):
     """
 
     @abstractmethod
-    def fromPixelCoordinatesToGridCoordinates(self: 'GenericGridImageProcessor', x: int, y: int) -> Tuple[int, ...]:
+    def from_pixel_coordinates_to_grid_coordinates(self: 'GenericGridImageProcessor', x: int, y: int) -> Tuple[int, ...]:
         """
         Convert pixel coordinates to grid coordinates.
 
@@ -27,10 +27,9 @@ class GenericGridImageProcessor(ABC):
         Returns:
             Tuple[int, ...]: The corresponding grid coordinates.
         """
-        pass
     
     @abstractmethod
-    def fromGridCoordinatesToCenterInPixelCoordinates(self: 'GenericGridImageProcessor', grid_element_position: Tuple[int, ...]) -> Tuple[int, ...]:
+    def from_grid_coordinates_to_center_in_pixel_coordinates(self: 'GenericGridImageProcessor', grid_element_position: Tuple[int, ...]) -> Tuple[int, ...]:
         """
         Convert grid coordinates to the center pixel coordinates of the grid element.
 
@@ -40,10 +39,9 @@ class GenericGridImageProcessor(ABC):
         Returns:
             Tuple[int, ...]: The center pixel coordinates of the grid element.
         """
-        pass
     
     @abstractmethod
-    def drawGridElementAt(self: 'GenericGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, ...], color: Tuple[int, int, int]) -> None:
+    def draw_grid_element_at(self: 'GenericGridImageProcessor', context: GenericOutputBuilder, grid_element_position: Tuple[int, ...], color: Tuple[int, int, int]) -> None:
         """
         Draw a grid element at the specified grid coordinates.
 
@@ -55,10 +53,9 @@ class GenericGridImageProcessor(ABC):
         Returns:
             None
         """
-        pass
     
     @abstractmethod
-    def approximateNumberOfGridElements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
+    def approximate_number_of_grid_elements(self: 'GenericGridImageProcessor', width: int, height: int) -> int:
         """
         Abstract method to approximate the number of grid elements in an image.
 
@@ -69,4 +66,3 @@ class GenericGridImageProcessor(ABC):
         Returns:
             int: The approximated number of grid elements.
         """
-        pass

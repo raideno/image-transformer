@@ -1,4 +1,11 @@
+"""
+This module defines the `GenericOutputBuilder` abstract base class, which provides an interface for rendering shapes 
+and saving the final output. The class includes methods for adding rectangles and hexagons, as well as saving the 
+rendered output to a file.
+"""
+
 from typing import Tuple
+
 from abc import ABC, abstractmethod
 
 class GenericOutputBuilder(ABC):
@@ -23,7 +30,6 @@ class GenericOutputBuilder(ABC):
             color (str):
                 The fill color of the square.
         """
-        pass
 
     @abstractmethod
     def add_hexagon(self: 'GenericOutputBuilder', x: int, y: int, size: int, color: Tuple[int, int, int]):
@@ -40,11 +46,9 @@ class GenericOutputBuilder(ABC):
             color (str):
                 The fill color of the hexagon.
         """
-        pass
 
     @abstractmethod
     def save(self: 'GenericOutputBuilder'):
         """
         Save the rendered output to a file.
         """
-        pass

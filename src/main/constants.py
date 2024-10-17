@@ -1,3 +1,7 @@
+"""
+This module defines constants for various image processors, pixel processors, and output builders used in the project.
+"""
+
 from output_builders.generic_output_builder import GenericOutputBuilder
 from output_builders.cairo_svg_output_builder import CairoSvgOutputBuilder
 from output_builders.handmade_svg_output_builder import HandmadeSvgOutputBuilder
