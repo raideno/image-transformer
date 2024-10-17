@@ -12,10 +12,14 @@ from image_transformer.output_builders.generic_output_builder import GenericOutp
 from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
-class ImageTransformer:
+class ImageTransformer:    
     """
     A class used to transform images using various processors and save the output.
     """
+    
+    steps: list[str] = ["step-1", "step-2"]
+    
+    
     def __init__(self: 'ImageTransformer', image_array: np.ndarray) -> None:
         """
         Constructs all the necessary attributes for the ImageTransformer object.
@@ -45,7 +49,7 @@ class ImageTransformer:
         image_processor: GenericGridImageProcessor,
         pixels_processor: GenericPixelsProcessor,
         output_builder: GenericOutputBuilder,
-        callback: Optional[Callable[[str, int], None]]
+        callback: Optional[Callable[[str, int], None]] = None
     ) -> Any:
         """
         Transforms the image using the provided processors and saves the output.
@@ -77,7 +81,7 @@ class ImageTransformer:
                 grid_elements[grid_element_position].append((x, y))
                 
                 if callback:
-                    callback('step-1', image_height * image_width)
+                    callback(ImageTransformer.steps[0], image_height * image_width)
                 
         for grid_element in grid_elements:
             grid_element_position = grid_element
@@ -93,4 +97,4 @@ class ImageTransformer:
             image_processor.draw_grid_element_at(output_builder, grid_element_position_on_pixels_plane, color)
 
             if callback:
-                callback('step-2', len(grid_elements))
+                callback(ImageTransformer.steps[1], len(grid_elements))

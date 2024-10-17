@@ -50,14 +50,10 @@ def main():
     image_processor = HexagonalGridImageProcessor(hexagon_size)
     pixels_processor = MostFrequentPixelsProcessor()
 
-    # NOTE: ignore
-    callback = lambda step, value: ""
-
     transformer.transform_and_save(
         image_processor=image_processor,
         pixels_processor=pixels_processor,
-        output_builder=output_builder,
-        callback=callback
+        output_builder=output_builder
     )
 
 if __name__ == "__main__":
@@ -69,15 +65,7 @@ if __name__ == "__main__":
 <table>
     <tr>
         <td>Original Image</td>
-        <td>Generated SVG</td>
-    </tr>
-    <tr>
-        <td>
-            <img src="data/simple-image.png" alt="Original Image">
-        </td>
-        <td>
-            <img src="data/simple-image.svg" alt="Generated SVG">
-        </td>
+        <td>Hexagonal SVG Version</td>
     </tr>
     <tr>
         <td>
@@ -85,6 +73,14 @@ if __name__ == "__main__":
         </td>
         <td>
             <img src="data/testing-image.svg" alt="Generated SVG">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data/simple-image.png" alt="Original Image">
+        </td>
+        <td>
+            <img src="data/simple-image.svg" alt="Generated SVG">
         </td>
     </tr>
 </table>
