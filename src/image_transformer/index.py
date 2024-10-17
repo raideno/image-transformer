@@ -3,9 +3,10 @@ This module provides the main entry point for the image-enhancer program. It par
 loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.
 """
 
+import importlib.resources
 import os
 import sys
-import pathlib
+import importlib
 
 from alive_progress import alive_bar
 
@@ -27,9 +28,6 @@ from image_transformer.pixels_processors.generic_pixels_processor import Generic
 from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 CONFIGURATION_FILE_NAME = "configurations.toml"
-CONFIGURATION_FILE_PATH = pathlib.Path(__file__).parent / CONFIGURATION_FILE_NAME
-
-configurations = load_configurations(CONFIGURATION_FILE_PATH)
 
 def main() -> None:
     """
@@ -52,6 +50,11 @@ def main() -> None:
     
     The function prints various details about the image and processing steps if verbose mode is enabled.
     """
+    configurations = None
+
+    with importlib.resources.path("image_transformer", CONFIGURATION_FILE_NAME) as CONFIGURATION_FILE_PATH:
+        configurations = load_configurations(CONFIGURATION_FILE_PATH)
+    
     arguments_parser = arguments_parser_factory(
         image_processors_keys=image_processors.keys(),
         pixels_processors_keys=pixels_processors.keys(),
