@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "image-transformer"
-version = "0.2.4"
+version = "0.2.5"
 description = "A Python project for enhancing images using various processing techniques."
 authors = ["raiden <nadirkichou@hotmail.fr>"]
 maintainers = [
@@ -16,6 +16,7 @@ packages = [
 ]
 include = [
     { path = "configurations.toml", format = "sdist" },
+    { path = "src/image_transformer/configurations.toml", format = "wheel" }
 ]
 
 [tool.poetry.dependencies]
