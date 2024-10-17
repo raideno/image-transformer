@@ -1,2 +1,2 @@
 [MESSAGES CONTROL]
-disable = trailing-whitespace, line-too-long, missing-final-newline, superfluous-parens, simplifiable-if-statement, unnecessary-lambda, use-implicit-booleaness-not-comparison, singleton-comparison, no-else-return, too-few-public-methods, unnecessary-lambda-assignment, too-many-locals
+disable = trailing-whitespace, line-too-long, missing-final-newline, superfluous-parens, simplifiable-if-statement, unnecessary-lambda, use-implicit-booleaness-not-comparison, singleton-comparison, no-else-return, too-few-public-methods, unnecessary-lambda-assignment, too-many-locals, duplicate-code
