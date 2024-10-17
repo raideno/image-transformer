@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pixels_processors package &#8212; Image Enhancer 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils package" href="utils.html" />
+    <link rel="prev" title="output_builders package" href="output_builders.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="pixels-processors-package">
+<h1>pixels_processors package<a class="headerlink" href="#pixels-processors-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-pixels_processors.average_pixels_processor">
+<span id="pixels-processors-average-pixels-processor-module"></span><h2>pixels_processors.average_pixels_processor module<a class="headerlink" href="#module-pixels_processors.average_pixels_processor" title="Link to this heading">¶</a></h2>
+<p>This module contains the AveragePixelsProcessor class which is used to calculate
+the average RGB color from a given set of pixels.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pixels_processors.average_pixels_processor.AveragePixelsProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pixels_processors.average_pixels_processor.</span></span><span class="sig-name descname"><span class="pre">AveragePixelsProcessor</span></span><a class="reference internal" href="_modules/pixels_processors/average_pixels_processor.html#AveragePixelsProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.average_pixels_processor.AveragePixelsProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericPixelsProcessor</span></code></a></p>
+<p>A class used to process pixels and calculate the average RGB color.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pixels_processors.average_pixels_processor.AveragePixelsProcessor.getRGBColorFromPixels">
+<span class="sig-name descname"><span class="pre">getRGBColorFromPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pixels_processors/average_pixels_processor.html#AveragePixelsProcessor.getRGBColorFromPixels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.average_pixels_processor.AveragePixelsProcessor.getRGBColorFromPixels" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the average RGB color from the given pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pixels</strong> (<em>np.ndarray</em>) – A numpy array of pixels from which the average color is to be calculated.</p>
+</dd>
+</dl>
+<p>Returns:
+Tuple[int, int, int]</p>
+<blockquote>
+<div><p>A tuple representing the average RGB color.</p>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pixels_processors.generic_pixels_processor">
+<span id="pixels-processors-generic-pixels-processor-module"></span><h2>pixels_processors.generic_pixels_processor module<a class="headerlink" href="#module-pixels_processors.generic_pixels_processor" title="Link to this heading">¶</a></h2>
+<p>This module contains the definition of the GenericPixelsProcessor abstract base class,
+which provides an interface for processing pixel data to extract RGB color information.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pixels_processors.generic_pixels_processor.GenericPixelsProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pixels_processors.generic_pixels_processor.</span></span><span class="sig-name descname"><span class="pre">GenericPixelsProcessor</span></span><a class="reference internal" href="_modules/pixels_processors/generic_pixels_processor.html#GenericPixelsProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>An abstract base class for processing pixel data to extract RGB color information.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pixels_processors.generic_pixels_processor.GenericPixelsProcessor.getRGBColorFromPixels">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getRGBColorFromPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pixels_processors/generic_pixels_processor.html#GenericPixelsProcessor.getRGBColorFromPixels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.generic_pixels_processor.GenericPixelsProcessor.getRGBColorFromPixels" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts the RGB color from the given pixel data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pixels</strong> (<em>np.ndarray</em>) – A numpy array representing the pixel data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the RGB color values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pixels_processors.most_frequent_pixels_processor">
+<span id="pixels-processors-most-frequent-pixels-processor-module"></span><h2>pixels_processors.most_frequent_pixels_processor module<a class="headerlink" href="#module-pixels_processors.most_frequent_pixels_processor" title="Link to this heading">¶</a></h2>
+<p>This module contains the MostFrequentPixelsProcessor class, which is used to process an array of pixels
+and determine the most frequently occurring RGB color.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pixels_processors.most_frequent_pixels_processor.</span></span><span class="sig-name descname"><span class="pre">MostFrequentPixelsProcessor</span></span><a class="reference internal" href="_modules/pixels_processors/most_frequent_pixels_processor.html#MostFrequentPixelsProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericPixelsProcessor</span></code></a></p>
+<p>A processor that identifies the most frequent RGB color from a given array of pixels.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor.getRGBColorFromPixels">
+<span class="sig-name descname"><span class="pre">getRGBColorFromPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pixels_processors/most_frequent_pixels_processor.html#MostFrequentPixelsProcessor.getRGBColorFromPixels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor.getRGBColorFromPixels" title="Link to this definition">¶</a></dt>
+<dd><p>Determines the most frequent RGB color from the provided array of pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pixels</strong> (<em>np.ndarray</em>) – A numpy array of pixels where each pixel is represented as an array of RGB values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The most frequently occurring RGB color as a tuple.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pixels_processors.random_pixels_processor">
+<span id="pixels-processors-random-pixels-processor-module"></span><h2>pixels_processors.random_pixels_processor module<a class="headerlink" href="#module-pixels_processors.random_pixels_processor" title="Link to this heading">¶</a></h2>
+<p>This module contains the RandomPixelsProcessor class, which is used to generate random RGB colors from pixel data.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pixels_processors.random_pixels_processor.RandomPixelsProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pixels_processors.random_pixels_processor.</span></span><span class="sig-name descname"><span class="pre">RandomPixelsProcessor</span></span><a class="reference internal" href="_modules/pixels_processors/random_pixels_processor.html#RandomPixelsProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.random_pixels_processor.RandomPixelsProcessor" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericPixelsProcessor</span></code></a></p>
+<p>A processor that generates random RGB colors from pixel data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pixels_processors.random_pixels_processor.RandomPixelsProcessor.getRGBColorFromPixels">
+<span class="sig-name descname"><span class="pre">getRGBColorFromPixels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pixels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pixels_processors/random_pixels_processor.html#RandomPixelsProcessor.getRGBColorFromPixels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pixels_processors.random_pixels_processor.RandomPixelsProcessor.getRGBColorFromPixels" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a random RGB color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pixels</strong> (<em>np.ndarray</em>) – The pixel data from which to generate the color.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple representing the RGB color.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pixels_processors">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pixels_processors" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Image Enhancer</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="image_processors.html">image_processors package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_builders.html">output_builders package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pixels_processors package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="output_builders.html" title="previous chapter">output_builders package</a></li>
+      <li>Next: <a href="utils.html" title="next chapter">utils package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Nadir Kichou.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/pixels_processors.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

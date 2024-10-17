@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>image_processors.square_grid_image_processor &#8212; Image Enhancer 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for image_processors.square_grid_image_processor</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains the SquareGridImageProcessor class, which is used to process images by dividing them into a grid of squares.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
+<span class="kn">from</span> <span class="nn">image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
+
+<div class="viewcode-block" id="SquareGridImageProcessor">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.square_grid_image_processor.SquareGridImageProcessor">[docs]</a>
+<span class="k">class</span> <span class="nc">SquareGridImageProcessor</span><span class="p">(</span><span class="n">GenericGridImageProcessor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to process images by dividing them into a grid of squares.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">square_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the SquareGridImageProcessor with the given square size.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            square_size (int): The size of each square in the grid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">square_size</span>
+    
+<div class="viewcode-block" id="SquareGridImageProcessor.fromPixelCoordinatesToGridCoordinates">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.square_grid_image_processor.SquareGridImageProcessor.fromPixelCoordinatesToGridCoordinates">[docs]</a>
+    <span class="k">def</span> <span class="nf">fromPixelCoordinatesToGridCoordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;SquareGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts pixel coordinates to grid coordinates.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            x (int): The x-coordinate in pixels.</span>
+<span class="sd">            y (int): The y-coordinate in pixels.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[int, ...]: The grid coordinates as a tuple (grid_x, grid_y).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">square_x_coordinate</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">)</span>
+        <span class="n">square_y_coordinate</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">square_x_coordinate</span><span class="p">,</span> <span class="n">square_y_coordinate</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="SquareGridImageProcessor.fromGridCoordinatesToCenterInPixelCoordinates">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.square_grid_image_processor.SquareGridImageProcessor.fromGridCoordinatesToCenterInPixelCoordinates">[docs]</a>
+    <span class="k">def</span> <span class="nf">fromGridCoordinatesToCenterInPixelCoordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;SquareGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts grid coordinates to the center pixel coordinates of the grid element.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            grid_element_position (Tuple[int, int]): The position of the grid element as a tuple (grid_x, grid_y).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[int, ...]: The center pixel coordinates as a tuple (center_x, center_y).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">grid_x</span><span class="p">,</span> <span class="n">grid_y</span> <span class="o">=</span> <span class="n">grid_element_position</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">grid_x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">,</span> <span class="n">grid_y</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SquareGridImageProcessor.drawGridElementAt">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.square_grid_image_processor.SquareGridImageProcessor.drawGridElementAt">[docs]</a>
+    <span class="k">def</span> <span class="nf">drawGridElementAt</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;SquareGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">GenericOutputBuilder</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Draws a grid element at the specified position with the given color.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            context (Context): The Cairo context to draw on.</span>
+<span class="sd">            grid_element_position (Tuple[int, int]): The position of the grid element as a tuple (grid_x, grid_y).</span>
+<span class="sd">            color (Tuple[int, int, int]): The color of the grid element as a tuple (r, g, b).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">grid_element_position</span>
+        
+        <span class="n">context</span><span class="o">.</span><span class="n">add_rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="SquareGridImageProcessor.approximateNumberOfGridElements">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.square_grid_image_processor.SquareGridImageProcessor.approximateNumberOfGridElements">[docs]</a>
+    <span class="k">def</span> <span class="nf">approximateNumberOfGridElements</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Approximates the number of grid elements that can fit in the given width and height.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            width (int): The width of the area in pixels.</span>
+<span class="sd">            height (int): The height of the area in pixels.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The approximate number of grid elements.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_elements_x</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span>
+        <span class="n">num_elements_y</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_size</span>
+        
+        <span class="k">return</span> <span class="n">num_elements_x</span> <span class="o">*</span> <span class="n">num_elements_y</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Image Enhancer</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Nadir Kichou.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
