@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "image-transformer"
-version = "0.2.3"
+version = "0.2.4"
 description = "A Python project for enhancing images using various processing techniques."
 authors = ["raiden <nadirkichou@hotmail.fr>"]
 maintainers = [
@@ -14,7 +14,9 @@ readme = "README.md"
 packages = [
     {include = "image_transformer", from = "src"}
 ]
-include = ["configurations.toml"]
+include = [
+    { path = "configurations.toml", format = "sdist" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
