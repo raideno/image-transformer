@@ -24,6 +24,30 @@ class CairoSvgOutputBuilder(GenericOutputBuilder):
         self.surface = cairo.SVGSurface(file_output_path, width, height) # pylint: disable=no-member
         self.context = cairo.Context(self.surface) # pylint: disable=no-member
 
+    def add_polygon(self: 'CairoSvgOutputBuilder', vertices: list[Tuple[float, float]], color: Tuple[int, int, int]):
+        """
+        Adds a polygon to the Cairo canvas based on the provided vertices and fills it with the specified color.
+        
+        Parameters:
+            vertices (list[Tuple[float, float]]): A list of (x, y) coordinates for the polygon's vertices.
+            color (Tuple[int, int, int]): The color of the polygon in RGB format (0-255 for each component).
+        """
+        if not vertices:
+            return
+
+        self.context.move_to(*vertices[0])
+        
+        for vertex in vertices[1:]:
+            self.context.line_to(*vertex)
+        
+        self.context.close_path()
+        
+        self.context.set_source_rgb(color[0] / 255, color[1] / 255, color[2] / 255)
+        
+        self.context.fill_preserve()
+        
+        self.context.stroke()
+
     def add_rectangle(self: 'CairoSvgOutputBuilder', x: int, y: int, size: int, color: Tuple[int, int, int]):
         """
         Add a square to the Cairo canvas at the specified position, size, and color.

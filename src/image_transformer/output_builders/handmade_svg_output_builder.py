@@ -26,6 +26,25 @@ class HandmadeSvgOutputBuilder(GenericOutputBuilder):
         self.file_output_path = file_output_path
         self.svg_content = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">']
 
+    def add_polygon(self: 'HandmadeSvgOutputBuilder', vertices: list[Tuple[float, float]], color: Tuple[int, int, int]):
+        """
+        Add a polygon to the SVG canvas based on the provided vertices and fill it with the specified color.
+
+        Parameters:
+            vertices (list[Tuple[float, float]]): A list of (x, y) coordinates for the polygon's vertices.
+            color (Tuple[int, int, int]): The color of the polygon in RGB format (0-255 for each component).
+        """
+        if not vertices:
+            return
+
+        points_str = ",".join([f"{px} {py}" for px, py in vertices])
+
+        rgba_color = f"rgba({color[0]}, {color[1]}, {color[2]})"
+
+        polygon_element = f'<polygon points="{points_str}" fill="{rgba_color}" stroke="none" />'
+
+        self.svg_content.append(polygon_element)
+
     def add_rectangle(self: 'HandmadeSvgOutputBuilder', x: int, y: int, size: int, color: Tuple[int, int, int]):
         """
         Add a square to the SVG at the specified position, size, and color.

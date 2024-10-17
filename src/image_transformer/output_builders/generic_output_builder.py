@@ -14,6 +14,16 @@ class GenericOutputBuilder(ABC):
 
     Defines the interface for adding shapes and saving the final output.
     """
+    
+    @abstractmethod
+    def add_polygon(self: 'GenericOutputBuilder', vertices: list[int, int], color: Tuple[int, int, int]):
+        """
+        Abstract method to add a polygon to the output.
+
+        Parameters:
+            vertices (list[int, int]): A list of tuples representing the vertices of the polygon.
+            color (Tuple[int, int, int]): A tuple representing the RGB color of the polygon.
+        """
 
     @abstractmethod
     def add_rectangle(self: 'GenericOutputBuilder', x: int, y: int, size: int, color: Tuple[int, int, int]):

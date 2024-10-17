@@ -11,6 +11,7 @@ from image_transformer.pixels_processors.average_pixels_processor import Average
 from image_transformer.pixels_processors.most_frequent_pixels_processor import MostFrequentPixelsProcessor
 from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
+from image_transformer.image_processors.triangle_grid_image_processor import TriangleGridImageProcessor
 from image_transformer.image_processors.hexagonal_grid_image_processor import HexagonalGridImageProcessor
 from image_transformer.image_processors.square_grid_image_processor import SquareGridImageProcessor
 from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
@@ -18,6 +19,7 @@ from image_transformer.image_processors.generic_grid_image_processor import Gene
 image_processors: dict[str, GenericGridImageProcessor] = {
     "hexagonal": HexagonalGridImageProcessor,
     "square": SquareGridImageProcessor,
+    "triangle": TriangleGridImageProcessor
 }
 
 pixels_processors: dict[str, GenericPixelsProcessor] = {
