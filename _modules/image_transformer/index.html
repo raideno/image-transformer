@@ -36,10 +36,10 @@
 <span class="sd">loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">importlib.resources</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">resources</span>
 
 <span class="kn">from</span> <span class="nn">alive_progress</span> <span class="kn">import</span> <span class="n">alive_bar</span>
 
@@ -87,7 +87,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">configurations</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">with</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;image_transformer&quot;</span><span class="p">,</span> <span class="n">CONFIGURATION_FILE_NAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">configuration_file_path</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;image_transformer&quot;</span><span class="p">,</span> <span class="n">CONFIGURATION_FILE_NAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">configuration_file_path</span><span class="p">:</span>
         <span class="n">configurations</span> <span class="o">=</span> <span class="n">load_configurations</span><span class="p">(</span><span class="n">configuration_file_path</span><span class="p">)</span>
     
     <span class="n">arguments_parser</span> <span class="o">=</span> <span class="n">arguments_parser_factory</span><span class="p">(</span>
