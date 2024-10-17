@@ -3,6 +3,13 @@ name = "image-transformer"
 version = "0.2.3"
 description = "A Python project for enhancing images using various processing techniques."
 authors = ["raiden <nadirkichou@hotmail.fr>"]
+maintainers = [
+    "raiden <nadirkichou@hotmail.fr>",
+]
+homepage = "https://raideno.github.io/m1-ds-rcs-part-5/"
+documentation = "https://raideno.github.io/m1-ds-rcs-part-5/"
+repository = "https://github.com/raideno/m1-ds-rcs-part-5"
+keywords = ["image-processing", "image-enhancement", "image-transformer"]
 readme = "README.md"
 packages = [
     {include = "image_transformer", from = "src"}
