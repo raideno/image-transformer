@@ -2,7 +2,7 @@
 A test module
 """
 
-from utils.loader import load_image
+from image_transformer.utils.loader import load_image
 
 def test_loads():
     """
