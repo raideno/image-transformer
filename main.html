@@ -38,87 +38,17 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-main.constants">
-<span id="main-constants-module"></span><h2>main.constants module<a class="headerlink" href="#module-main.constants" title="Link to this heading">¶</a></h2>
-<p>This module defines constants for various image processors, pixel processors, and output builders used in the project.</p>
+<section id="main-constants-module">
+<h2>main.constants module<a class="headerlink" href="#main-constants-module" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-main.image_transformer">
-<span id="main-image-transformer-module"></span><h2>main.image_transformer module<a class="headerlink" href="#module-main.image_transformer" title="Link to this heading">¶</a></h2>
-<p>This module provides the ImageTransformer class, which is used to transform images using various processors and save the output.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="main.image_transformer.ImageTransformer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.image_transformer.</span></span><span class="sig-name descname"><span class="pre">ImageTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main/image_transformer.html#ImageTransformer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.image_transformer.ImageTransformer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A class used to transform images using various processors and save the output.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="main.image_transformer.ImageTransformer.from_pil_image">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pil_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pil_image:</span> <span class="pre">&lt;module</span> <span class="pre">'PIL.Image'</span> <span class="pre">from</span> <span class="pre">'/home/runner/work/m1-ds-rcs-part-5/m1-ds-rcs-part-5/.venv/lib/python3.12/site-packages/PIL/Image.py'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#main.image_transformer.ImageTransformer" title="main.image_transformer.ImageTransformer"><span class="pre">ImageTransformer</span></a></span></span><a class="reference internal" href="_modules/main/image_transformer.html#ImageTransformer.from_pil_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.image_transformer.ImageTransformer.from_pil_image" title="Link to this definition">¶</a></dt>
-<dd><p>Class method to create an ImageTransformer instance from a PIL image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>pil_image</strong> (<em>PIL.Image</em>) – A PIL image object.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An instance of ImageTransformer.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#main.image_transformer.ImageTransformer" title="main.image_transformer.ImageTransformer">ImageTransformer</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="main.image_transformer.ImageTransformer.transform_and_save">
-<span class="sig-name descname"><span class="pre">transform_and_save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor" title="image_processors.generic_grid_image_processor.GenericGridImageProcessor"><span class="pre">GenericGridImageProcessor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="pixels_processors.html#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><span class="pre">GenericPixelsProcessor</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_builder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="output_builders.html#output_builders.generic_output_builder.GenericOutputBuilder" title="output_builders.generic_output_builder.GenericOutputBuilder"><span class="pre">GenericOutputBuilder</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/main/image_transformer.html#ImageTransformer.transform_and_save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.image_transformer.ImageTransformer.transform_and_save" title="Link to this definition">¶</a></dt>
-<dd><p>Transforms the image using the provided processors and saves the output.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>image_processor</strong> (<a class="reference internal" href="image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor" title="image_processors.generic_grid_image_processor.GenericGridImageProcessor"><em>GenericGridImageProcessor</em></a>) – An object responsible for processing the image grid.</p></li>
-<li><p><strong>pixels_processor</strong> (<a class="reference internal" href="pixels_processors.html#pixels_processors.generic_pixels_processor.GenericPixelsProcessor" title="pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><em>GenericPixelsProcessor</em></a>) – An object responsible for processing the pixels.</p></li>
-<li><p><strong>output_builder</strong> (<a class="reference internal" href="output_builders.html#output_builders.generic_output_builder.GenericOutputBuilder" title="output_builders.generic_output_builder.GenericOutputBuilder"><em>GenericOutputBuilder</em></a>) – An object responsible for building the output.</p></li>
-<li><p><strong>callback</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>[</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>None</em><em>]</em><em>]</em>) – A callback function to report progress.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="simple">
-<dt>Returns</dt><dd><p>Any: The result of the output builder’s save method.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<section id="main-image-transformer-module">
+<h2>main.image_transformer module<a class="headerlink" href="#main-image-transformer-module" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-main.index">
-<span id="main-index-module"></span><h2>main.index module<a class="headerlink" href="#module-main.index" title="Link to this heading">¶</a></h2>
-<p>This module provides the main entry point for the image-enhancer program. It parses command-line arguments,
-loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="main.index.main">
-<span class="sig-prename descclassname"><span class="pre">main.index.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/main/index.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.index.main" title="Link to this definition">¶</a></dt>
-<dd><p>Main function to run the image-enhancer program.
-This function performs the following steps:</p>
-<ol class="arabic simple">
-<li><p>Parses command-line arguments to get the image path, processors, size, output directory, and verbosity.</p></li>
-<li><p>Loads the image from the specified path.</p></li>
-<li><p>Analyzes the image to divide it into grid elements based on the specified grid processor.</p></li>
-<li><p>Processes the pixels within each grid element using the specified pixel processor.</p></li>
-<li><p>Outputs the processed image as an SVG file in the specified output directory.</p></li>
-</ol>
-<p>Command-line arguments:
-- image_path: Path to the input image file.
-- grid: Key for the grid image processor to use.
-- pixels: Key for the pixels processor to use.
-- size: Size parameter for the grid image processor.
-- output_directory: Directory to save the output SVG file.
-- verbose: Flag to enable verbose logging.</p>
-<p>The function prints various details about the image and processing steps if verbose mode is enabled.</p>
-</dd></dl>
-
+<section id="main-index-module">
+<h2>main.index module<a class="headerlink" href="#main-index-module" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-main">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-main" title="Link to this heading">¶</a></h2>
+<section id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 

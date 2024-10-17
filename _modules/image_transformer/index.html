@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>main.index &#8212; Image Enhancer 0.1.0 documentation</title>
+    <title>image_transformer.index &#8212; Image Enhancer 0.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
@@ -30,40 +30,40 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for main.index</h1><div class="highlight"><pre>
+  <h1>Source code for image_transformer.index</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This module provides the main entry point for the image-enhancer program. It parses command-line arguments,</span>
 <span class="sd">loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">importlib.resources</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 
 <span class="kn">from</span> <span class="nn">alive_progress</span> <span class="kn">import</span> <span class="n">alive_bar</span>
 
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">image_processors</span>
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">pixels_processors</span>
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">outputs_builders</span>
+<span class="kn">from</span> <span class="nn">image_transformer.constants</span> <span class="kn">import</span> <span class="n">image_processors</span>
+<span class="kn">from</span> <span class="nn">image_transformer.constants</span> <span class="kn">import</span> <span class="n">pixels_processors</span>
+<span class="kn">from</span> <span class="nn">image_transformer.constants</span> <span class="kn">import</span> <span class="n">outputs_builders</span>
 
-<span class="kn">from</span> <span class="nn">main.image_transformer</span> <span class="kn">import</span> <span class="n">ImageTransformer</span>
+<span class="kn">from</span> <span class="nn">image_transformer.image_transformer</span> <span class="kn">import</span> <span class="n">ImageTransformer</span>
 
-<span class="kn">from</span> <span class="nn">utils.loader</span> <span class="kn">import</span> <span class="n">load_image</span>
-<span class="kn">from</span> <span class="nn">utils.arguments_parser</span> <span class="kn">import</span> <span class="n">arguments_parser_factory</span>
-<span class="kn">from</span> <span class="nn">utils.configurations_loader</span> <span class="kn">import</span> <span class="n">load_configurations</span>
-<span class="kn">from</span> <span class="nn">utils.arguments_validator</span> <span class="kn">import</span> <span class="n">validate_and_parse_arguments</span>
+<span class="kn">from</span> <span class="nn">image_transformer.utils.loader</span> <span class="kn">import</span> <span class="n">load_image</span>
+<span class="kn">from</span> <span class="nn">image_transformer.utils.arguments_parser</span> <span class="kn">import</span> <span class="n">arguments_parser_factory</span>
+<span class="kn">from</span> <span class="nn">image_transformer.utils.configurations_loader</span> <span class="kn">import</span> <span class="n">load_configurations</span>
+<span class="kn">from</span> <span class="nn">image_transformer.utils.arguments_validator</span> <span class="kn">import</span> <span class="n">validate_and_parse_arguments</span>
 
-<span class="kn">from</span> <span class="nn">output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
+<span class="kn">from</span> <span class="nn">image_transformer.output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
 
-<span class="kn">from</span> <span class="nn">pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
+<span class="kn">from</span> <span class="nn">image_transformer.pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
 
-<span class="kn">from</span> <span class="nn">image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
+<span class="kn">from</span> <span class="nn">image_transformer.image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
 
-<span class="n">CONFIGURATION_FILE_PATH</span> <span class="o">=</span> <span class="s2">&quot;configurations.toml&quot;</span>
-
-<span class="n">configurations</span> <span class="o">=</span> <span class="n">load_configurations</span><span class="p">(</span><span class="n">CONFIGURATION_FILE_PATH</span><span class="p">)</span>
+<span class="n">CONFIGURATION_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;configurations.toml&quot;</span>
 
 <div class="viewcode-block" id="main">
-<a class="viewcode-back" href="../../main.html#main.index.main">[docs]</a>
+<a class="viewcode-back" href="../../image_transformer.html#image_transformer.index.main">[docs]</a>
 <span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Main function to run the image-enhancer program.</span>
@@ -85,6 +85,11 @@
 <span class="sd">    </span>
 <span class="sd">    The function prints various details about the image and processing steps if verbose mode is enabled.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">configurations</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">with</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;image_transformer&quot;</span><span class="p">,</span> <span class="n">CONFIGURATION_FILE_NAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">configuration_file_path</span><span class="p">:</span>
+        <span class="n">configurations</span> <span class="o">=</span> <span class="n">load_configurations</span><span class="p">(</span><span class="n">configuration_file_path</span><span class="p">)</span>
+    
     <span class="n">arguments_parser</span> <span class="o">=</span> <span class="n">arguments_parser_factory</span><span class="p">(</span>
         <span class="n">image_processors_keys</span><span class="o">=</span><span class="n">image_processors</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
         <span class="n">pixels_processors_keys</span><span class="o">=</span><span class="n">pixels_processors</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>

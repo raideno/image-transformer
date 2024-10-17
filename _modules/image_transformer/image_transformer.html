@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>main.image_transformer &#8212; Image Enhancer 0.1.0 documentation</title>
+    <title>image_transformer.image_transformer &#8212; Image Enhancer 0.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
@@ -30,7 +30,7 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for main.image_transformer</h1><div class="highlight"><pre>
+  <h1>Source code for image_transformer.image_transformer</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">This module provides the ImageTransformer class, which is used to transform images using various processors and save the output.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -41,12 +41,12 @@
 
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="kn">from</span> <span class="nn">output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
-<span class="kn">from</span> <span class="nn">pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
-<span class="kn">from</span> <span class="nn">image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
+<span class="kn">from</span> <span class="nn">image_transformer.output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
+<span class="kn">from</span> <span class="nn">image_transformer.pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
+<span class="kn">from</span> <span class="nn">image_transformer.image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
 
 <div class="viewcode-block" id="ImageTransformer">
-<a class="viewcode-back" href="../../main.html#main.image_transformer.ImageTransformer">[docs]</a>
+<a class="viewcode-back" href="../../image_transformer.html#image_transformer.image_transformer.ImageTransformer">[docs]</a>
 <span class="k">class</span> <span class="nc">ImageTransformer</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class used to transform images using various processors and save the output.</span>
@@ -61,7 +61,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span> <span class="o">=</span> <span class="n">image_array</span>
 
 <div class="viewcode-block" id="ImageTransformer.from_pil_image">
-<a class="viewcode-back" href="../../main.html#main.image_transformer.ImageTransformer.from_pil_image">[docs]</a>
+<a class="viewcode-back" href="../../image_transformer.html#image_transformer.image_transformer.ImageTransformer.from_pil_image">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_pil_image</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pil_image</span><span class="p">:</span> <span class="n">Image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ImageTransformer&#39;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -79,7 +79,7 @@
 
         
 <div class="viewcode-block" id="ImageTransformer.transform_and_save">
-<a class="viewcode-back" href="../../main.html#main.image_transformer.ImageTransformer.transform_and_save">[docs]</a>
+<a class="viewcode-back" href="../../image_transformer.html#image_transformer.image_transformer.ImageTransformer.transform_and_save">[docs]</a>
     <span class="k">def</span> <span class="nf">transform_and_save</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;ImageTransformer&#39;</span><span class="p">,</span>
         <span class="n">image_processor</span><span class="p">:</span> <span class="n">GenericGridImageProcessor</span><span class="p">,</span>
