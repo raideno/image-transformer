@@ -52,8 +52,8 @@ def main() -> None:
     """
     configurations = None
 
-    with importlib.resources.path("image_transformer", CONFIGURATION_FILE_NAME) as CONFIGURATION_FILE_PATH:
-        configurations = load_configurations(CONFIGURATION_FILE_PATH)
+    with importlib.resources.path("image_transformer", CONFIGURATION_FILE_NAME) as configuration_file_path:
+        configurations = load_configurations(configuration_file_path)
     
     arguments_parser = arguments_parser_factory(
         image_processors_keys=image_processors.keys(),
