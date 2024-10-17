@@ -5,6 +5,7 @@ loads an image, processes it using specified image and pixel processors, and out
 
 import os
 import sys
+import pathlib
 
 from alive_progress import alive_bar
 
@@ -25,7 +26,8 @@ from image_transformer.pixels_processors.generic_pixels_processor import Generic
 
 from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
-CONFIGURATION_FILE_PATH = "configurations.toml"
+CONFIGURATION_FILE_NAME = "configurations.toml"
+CONFIGURATION_FILE_PATH = pathlib.Path(__file__).parent / CONFIGURATION_FILE_NAME
 
 configurations = load_configurations(CONFIGURATION_FILE_PATH)
 

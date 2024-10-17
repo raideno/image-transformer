@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "image-transformer"
-version = "0.2.1"
+version = "0.2.2"
 description = "A Python project for enhancing images using various processing techniques."
 authors = ["raiden <nadirkichou@hotmail.fr>"]
 readme = "README.md"
