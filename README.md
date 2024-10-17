@@ -54,3 +54,9 @@ This are for people who want to dig in hexagonal grids & know how to deal with i
 - `poetry add sphinx --dev`: to install sphinx.
 - `poetry run sphinx-apidoc -o docs/ src/`: to generate the .rst files for each module. This command should be run each time you have a new module or there is some changes in one of your modules.
 - `poetry run sphinx-build -b html docs docs/_build`: to build the documentation. Each time there is a change.
+
+## Upload to Pypi
+
+- `poetry config http-basic.pypi __token__ <api-toke>`: to specify your pipy credentials.
+- `poetry build`: build the project.
+- `poetry publish`: to publish the builded project into pypi.
