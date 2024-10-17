@@ -36,9 +36,9 @@
 <span class="sd">the average RGB color from a given set of pixels.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
 
@@ -51,9 +51,9 @@
 <span class="sd">    A class used to process pixels and calculate the average RGB color.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="AveragePixelsProcessor.getRGBColorFromPixels">
-<a class="viewcode-back" href="../../pixels_processors.html#pixels_processors.average_pixels_processor.AveragePixelsProcessor.getRGBColorFromPixels">[docs]</a>
-    <span class="k">def</span> <span class="nf">getRGBColorFromPixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;AveragePixelsProcessor&#39;</span><span class="p">,</span> <span class="n">pixels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<div class="viewcode-block" id="AveragePixelsProcessor.get_rgb_color_from_pixels">
+<a class="viewcode-back" href="../../pixels_processors.html#pixels_processors.average_pixels_processor.AveragePixelsProcessor.get_rgb_color_from_pixels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_rgb_color_from_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;AveragePixelsProcessor&#39;</span><span class="p">,</span> <span class="n">pixels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the average RGB color from the given pixels.</span>
 

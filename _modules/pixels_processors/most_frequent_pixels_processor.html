@@ -36,12 +36,14 @@
 <span class="sd">and determine the most frequently occurring RGB color.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
 <span class="kn">from</span> <span class="nn">pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
+
 
 <div class="viewcode-block" id="MostFrequentPixelsProcessor">
 <a class="viewcode-back" href="../../pixels_processors.html#pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor">[docs]</a>
@@ -50,9 +52,9 @@
 <span class="sd">    A processor that identifies the most frequent RGB color from a given array of pixels.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-<div class="viewcode-block" id="MostFrequentPixelsProcessor.getRGBColorFromPixels">
-<a class="viewcode-back" href="../../pixels_processors.html#pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor.getRGBColorFromPixels">[docs]</a>
-    <span class="k">def</span> <span class="nf">getRGBColorFromPixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;MostFrequentPixelsProcessor&#39;</span><span class="p">,</span> <span class="n">pixels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<div class="viewcode-block" id="MostFrequentPixelsProcessor.get_rgb_color_from_pixels">
+<a class="viewcode-back" href="../../pixels_processors.html#pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor.get_rgb_color_from_pixels">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_rgb_color_from_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;MostFrequentPixelsProcessor&#39;</span><span class="p">,</span> <span class="n">pixels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Determines the most frequent RGB color from the provided array of pixels.</span>
 

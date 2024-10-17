@@ -50,10 +50,10 @@
 <span class="sd">    for converting between pixel and grid coordinates, and for drawing grid elements.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="GenericGridImageProcessor.fromPixelCoordinatesToGridCoordinates">
-<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.fromPixelCoordinatesToGridCoordinates">[docs]</a>
+<div class="viewcode-block" id="GenericGridImageProcessor.from_pixel_coordinates_to_grid_coordinates">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.from_pixel_coordinates_to_grid_coordinates">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">fromPixelCoordinatesToGridCoordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">from_pixel_coordinates_to_grid_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convert pixel coordinates to grid coordinates.</span>
 
@@ -63,14 +63,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Tuple[int, ...]: The corresponding grid coordinates.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
     
-<div class="viewcode-block" id="GenericGridImageProcessor.fromGridCoordinatesToCenterInPixelCoordinates">
-<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.fromGridCoordinatesToCenterInPixelCoordinates">[docs]</a>
+<div class="viewcode-block" id="GenericGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">fromGridCoordinatesToCenterInPixelCoordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">from_grid_coordinates_to_center_in_pixel_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convert grid coordinates to the center pixel coordinates of the grid element.</span>
 
@@ -79,14 +78,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Tuple[int, ...]: The center pixel coordinates of the grid element.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
     
-<div class="viewcode-block" id="GenericGridImageProcessor.drawGridElementAt">
-<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.drawGridElementAt">[docs]</a>
+<div class="viewcode-block" id="GenericGridImageProcessor.draw_grid_element_at">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.draw_grid_element_at">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">drawGridElementAt</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">GenericOutputBuilder</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">draw_grid_element_at</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">GenericOutputBuilder</span><span class="p">,</span> <span class="n">grid_element_position</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">color</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a grid element at the specified grid coordinates.</span>
 
@@ -97,14 +95,13 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 
     
-<div class="viewcode-block" id="GenericGridImageProcessor.approximateNumberOfGridElements">
-<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.approximateNumberOfGridElements">[docs]</a>
+<div class="viewcode-block" id="GenericGridImageProcessor.approximate_number_of_grid_elements">
+<a class="viewcode-back" href="../../image_processors.html#image_processors.generic_grid_image_processor.GenericGridImageProcessor.approximate_number_of_grid_elements">[docs]</a>
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">approximateNumberOfGridElements</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">approximate_number_of_grid_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;GenericGridImageProcessor&#39;</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Abstract method to approximate the number of grid elements in an image.</span>
 
@@ -114,8 +111,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            int: The approximated number of grid elements.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">pass</span></div>
+<span class="sd">        &quot;&quot;&quot;</span></div>
 </div>
 
 </pre></div>

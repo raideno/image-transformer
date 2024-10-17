@@ -40,6 +40,7 @@
 </section>
 <section id="module-output_builders.cairo_svg_output_builder">
 <span id="output-builders-cairo-svg-output-builder-module"></span><h2>output_builders.cairo_svg_output_builder module<a class="headerlink" href="#module-output_builders.cairo_svg_output_builder" title="Link to this heading">¶</a></h2>
+<p>This module provides an implementation of the GenericOutputBuilder interface using the Cairo library to render shapes to an SVG file.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">output_builders.cairo_svg_output_builder.</span></span><span class="sig-name descname"><span class="pre">CairoSvgOutputBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_output_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/output_builders/cairo_svg_output_builder.html#CairoSvgOutputBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder" title="Link to this definition">¶</a></dt>
@@ -68,6 +69,9 @@
 </section>
 <section id="module-output_builders.generic_output_builder">
 <span id="output-builders-generic-output-builder-module"></span><h2>output_builders.generic_output_builder module<a class="headerlink" href="#module-output_builders.generic_output_builder" title="Link to this heading">¶</a></h2>
+<p>This module defines the <cite>GenericOutputBuilder</cite> abstract base class, which provides an interface for rendering shapes
+and saving the final output. The class includes methods for adding rectangles and hexagons, as well as saving the
+rendered output to a file.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="output_builders.generic_output_builder.GenericOutputBuilder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">output_builders.generic_output_builder.</span></span><span class="sig-name descname"><span class="pre">GenericOutputBuilder</span></span><a class="reference internal" href="_modules/output_builders/generic_output_builder.html#GenericOutputBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#output_builders.generic_output_builder.GenericOutputBuilder" title="Link to this definition">¶</a></dt>

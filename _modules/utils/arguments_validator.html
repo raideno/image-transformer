@@ -58,11 +58,11 @@
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">arguments_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">raw_arguments</span><span class="p">)</span>
     
     <span class="n">image_path</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">image_path</span>
-    <span class="n">image_processor</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">grid</span>
-    <span class="n">pixels_processor</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">pixels</span>
+    <span class="n">_image_processor</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">grid</span>
+    <span class="n">_pixels_processor</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">pixels</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">size</span>
     <span class="n">output_directory</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">output_directory</span>
-    <span class="n">verbose</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">verbose</span>
+    <span class="n">_verbose</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">verbose</span>
     
     <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](error): the size &#39;</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#39; is not valid. It must be between 1 and 100.&quot;</span><span class="p">)</span>

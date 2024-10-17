@@ -31,31 +31,48 @@
           <div class="body" role="main">
             
   <h1>Source code for main.image_transformer</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides the ImageTransformer class, which is used to transform images using various processors and save the output.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">image_processors</span>
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">pixels_processors</span>
-<span class="kn">from</span> <span class="nn">main.constants</span> <span class="kn">import</span> <span class="n">outputs_builders</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <span class="kn">from</span> <span class="nn">output_builders.generic_output_builder</span> <span class="kn">import</span> <span class="n">GenericOutputBuilder</span>
 <span class="kn">from</span> <span class="nn">pixels_processors.generic_pixels_processor</span> <span class="kn">import</span> <span class="n">GenericPixelsProcessor</span>
 <span class="kn">from</span> <span class="nn">image_processors.generic_grid_image_processor</span> <span class="kn">import</span> <span class="n">GenericGridImageProcessor</span>
 
-
 <div class="viewcode-block" id="ImageTransformer">
 <a class="viewcode-back" href="../../main.html#main.image_transformer.ImageTransformer">[docs]</a>
 <span class="k">class</span> <span class="nc">ImageTransformer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class used to transform images using various processors and save the output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="s1">&#39;ImageTransformer&#39;</span><span class="p">,</span> <span class="n">image_array</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs all the necessary attributes for the ImageTransformer object.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            image_array (np.ndarray): A numpy array representing the image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span> <span class="o">=</span> <span class="n">image_array</span>
 
 <div class="viewcode-block" id="ImageTransformer.from_pil_image">
 <a class="viewcode-back" href="../../main.html#main.image_transformer.ImageTransformer.from_pil_image">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_pil_image</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pil_image</span><span class="p">:</span> <span class="n">Image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ImageTransformer&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Class method to create an ImageTransformer instance from a PIL image.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            pil_image (PIL.Image): A PIL image object.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            ImageTransformer: An instance of ImageTransformer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pil_image</span><span class="p">)</span>
         
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">image_array</span><span class="p">)</span></div>
@@ -70,6 +87,22 @@
         <span class="n">output_builder</span><span class="p">:</span> <span class="n">GenericOutputBuilder</span><span class="p">,</span>
         <span class="n">callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transforms the image using the provided processors and saves the output.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            image_processor (GenericGridImageProcessor):</span>
+<span class="sd">                An object responsible for processing the image grid.</span>
+<span class="sd">            pixels_processor (GenericPixelsProcessor):</span>
+<span class="sd">                An object responsible for processing the pixels.</span>
+<span class="sd">            output_builder (GenericOutputBuilder):</span>
+<span class="sd">                An object responsible for building the output.</span>
+<span class="sd">            callback (Optional[Callable[[str, int], None]]):</span>
+<span class="sd">                A callback function to report progress.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">            Any: The result of the output builder&#39;s save method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">image_height</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">image_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     
@@ -77,7 +110,7 @@
         
         <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_height</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_width</span><span class="p">):</span>
-                <span class="n">grid_element_position</span> <span class="o">=</span> <span class="n">image_processor</span><span class="o">.</span><span class="n">fromPixelCoordinatesToGridCoordinates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="n">grid_element_position</span> <span class="o">=</span> <span class="n">image_processor</span><span class="o">.</span><span class="n">from_pixel_coordinates_to_grid_coordinates</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
                 <span class="n">grid_elements</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">grid_element_position</span><span class="p">,</span> <span class="p">[])</span>
                 
@@ -93,11 +126,11 @@
             
             <span class="n">pixels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">image_array</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pixels_coordinates</span><span class="p">])</span>
             
-            <span class="n">grid_element_position_on_pixels_plane</span> <span class="o">=</span> <span class="n">image_processor</span><span class="o">.</span><span class="n">fromGridCoordinatesToCenterInPixelCoordinates</span><span class="p">(</span><span class="n">grid_element_position</span><span class="p">)</span>
+            <span class="n">grid_element_position_on_pixels_plane</span> <span class="o">=</span> <span class="n">image_processor</span><span class="o">.</span><span class="n">from_grid_coordinates_to_center_in_pixel_coordinates</span><span class="p">(</span><span class="n">grid_element_position</span><span class="p">)</span>
                         
-            <span class="n">color</span> <span class="o">=</span> <span class="n">pixels_processor</span><span class="o">.</span><span class="n">getRGBColorFromPixels</span><span class="p">(</span><span class="n">pixels</span><span class="p">)</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="n">pixels_processor</span><span class="o">.</span><span class="n">get_rgb_color_from_pixels</span><span class="p">(</span><span class="n">pixels</span><span class="p">)</span>
             
-            <span class="n">image_processor</span><span class="o">.</span><span class="n">drawGridElementAt</span><span class="p">(</span><span class="n">output_builder</span><span class="p">,</span> <span class="n">grid_element_position_on_pixels_plane</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+            <span class="n">image_processor</span><span class="o">.</span><span class="n">draw_grid_element_at</span><span class="p">(</span><span class="n">output_builder</span><span class="p">,</span> <span class="n">grid_element_position_on_pixels_plane</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">callback</span><span class="p">:</span>
                 <span class="n">callback</span><span class="p">(</span><span class="s1">&#39;step-2&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid_elements</span><span class="p">))</span></div>
