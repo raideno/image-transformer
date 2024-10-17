@@ -3,10 +3,10 @@ This module provides the main entry point for the image-enhancer program. It par
 loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.
 """
 
-import importlib.resources
 import os
 import sys
-import importlib
+
+from importlib import resources
 
 from alive_progress import alive_bar
 
@@ -52,7 +52,7 @@ def main() -> None:
     """
     configurations = None
 
-    with importlib.resources.path("image_transformer", CONFIGURATION_FILE_NAME) as configuration_file_path:
+    with resources.path("image_transformer", CONFIGURATION_FILE_NAME) as configuration_file_path:
         configurations = load_configurations(configuration_file_path)
     
     arguments_parser = arguments_parser_factory(
