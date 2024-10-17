@@ -19,7 +19,7 @@ pip install image-transformer
 Example usage:
 
 ```
-image-transformer [--help] [-g {hexagonal,square}] [-p {random,average,frequent}] [-s SIZE] image_path
+image-transformer [--help] [-g {hexagonal,square,triangle}] [-p {random,average,frequent}] [-s SIZE] image_path
 ```
 
 **Note:** for more details about all the available params use the following command: `image-transformer --help`.

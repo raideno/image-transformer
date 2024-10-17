@@ -24,8 +24,8 @@ class AveragePixelsProcessor(GenericPixelsProcessor):
             pixels (np.ndarray): A numpy array of pixels from which the average color is to be calculated.
 
         Returns:
-        Tuple[int, int, int]
-            A tuple representing the average RGB color.
+            Tuple[int, int, int]
+                A tuple representing the average RGB color.
         """
         avg_color = np.mean(pixels, axis=0)
         avg_color = tuple(avg_color.astype(int))
