@@ -7,7 +7,7 @@ between pixel and grid coordinates, and to draw grid elements on a given context
 from typing import Tuple
 from abc import ABC, abstractmethod
 
-from output_builders.generic_output_builder import GenericOutputBuilder
+from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
 
 class GenericGridImageProcessor(ABC):
     """

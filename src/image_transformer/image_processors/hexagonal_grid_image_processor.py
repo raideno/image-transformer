@@ -8,8 +8,8 @@ from typing import Tuple
 
 import numpy as np
 
-from output_builders.generic_output_builder import GenericOutputBuilder
-from image_processors.generic_grid_image_processor import GenericGridImageProcessor
+from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
+from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 # NOTE: using offset coordinates - odd-q vertical layout (pointy-topped hexagons)
 # NOTE: https://www.redblobgames.com/grids/hexagons/#coordinates-offset

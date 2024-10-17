@@ -8,22 +8,22 @@ import sys
 
 from alive_progress import alive_bar
 
-from main.constants import image_processors
-from main.constants import pixels_processors
-from main.constants import outputs_builders
+from image_transformer.constants import image_processors
+from image_transformer.constants import pixels_processors
+from image_transformer.constants import outputs_builders
 
-from main.image_transformer import ImageTransformer
+from image_transformer.image_transformer import ImageTransformer
 
-from utils.loader import load_image
-from utils.arguments_parser import arguments_parser_factory
-from utils.configurations_loader import load_configurations
-from utils.arguments_validator import validate_and_parse_arguments
+from image_transformer.utils.loader import load_image
+from image_transformer.utils.arguments_parser import arguments_parser_factory
+from image_transformer.utils.configurations_loader import load_configurations
+from image_transformer.utils.arguments_validator import validate_and_parse_arguments
 
-from output_builders.generic_output_builder import GenericOutputBuilder
+from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
 
-from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
+from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
-from image_processors.generic_grid_image_processor import GenericGridImageProcessor
+from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 CONFIGURATION_FILE_PATH = "configurations.toml"
 

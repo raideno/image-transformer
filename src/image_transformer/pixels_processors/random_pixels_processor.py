@@ -6,7 +6,7 @@ from typing import Tuple
 
 import numpy as np
 
-from pixels_processors.generic_pixels_processor import GenericPixelsProcessor
+from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
 
 
 class RandomPixelsProcessor(GenericPixelsProcessor):

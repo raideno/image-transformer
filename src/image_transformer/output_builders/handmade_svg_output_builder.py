@@ -8,7 +8,7 @@ from typing import Tuple
 
 import numpy as np
 
-from output_builders.generic_output_builder import GenericOutputBuilder
+from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
 
 class HandmadeSvgOutputBuilder(GenericOutputBuilder):
     """

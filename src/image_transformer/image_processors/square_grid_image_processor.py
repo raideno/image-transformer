@@ -4,8 +4,8 @@ This module contains the SquareGridImageProcessor class, which is used to proces
 
 from typing import Tuple
 
-from output_builders.generic_output_builder import GenericOutputBuilder
-from image_processors.generic_grid_image_processor import GenericGridImageProcessor
+from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
+from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 class SquareGridImageProcessor(GenericGridImageProcessor):
     """
