@@ -6,9 +6,9 @@ authors = ["raiden <nadirkichou@hotmail.fr>"]
 maintainers = [
     "raiden <nadirkichou@hotmail.fr>",
 ]
-homepage = "https://raideno.github.io/m1-ds-rcs-part-5/"
-documentation = "https://raideno.github.io/m1-ds-rcs-part-5/"
-repository = "https://github.com/raideno/m1-ds-rcs-part-5"
+homepage = "https://raideno.github.io/image-transformer/"
+documentation = "https://raideno.github.io/image-transformer/"
+repository = "https://github.com/raideno/image-transformer"
 keywords = ["image-processing", "image-enhancement", "image-transformer"]
 readme = "README.md"
 packages = [
