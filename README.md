@@ -108,3 +108,13 @@ This are for people who want to dig in hexagonal grids & know how to deal with i
 - `poetry config http-basic.pypi __token__ <api-toke>`: to specify your pipy credentials.
 - `poetry build`: build the project.
 - `poetry publish`: to publish the builded project into pypi.
+
+### About Poetry
+
+[Poetry Scripts Section](https://github.com/python-poetry/poetry/issues/241#issuecomment-470200353):
+
+> It looks like there is a desire for developer/project specific helper scripts, but that's not what [tool.poetry.scripts] is for. As mentioned, scripts are entrypoints into a python packages. This section's purpose is for libraries to install useful command line tools. Libraries like pytest, poetry, and the aws cli would use this scripts section so you can call their tool from the command line.
+
+[Reason why they don't add a `dev-scripts` section](https://github.com/python-poetry/poetry/issues/241#issuecomment-470212635).
+
+[ ] Poetry support multi language ?
