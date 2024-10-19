@@ -42,26 +42,55 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-cli.html">Quickstart Cli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-program.html">Quickstart Program</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example-1.html">Simple Image to SVG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-2.html">Random Hexagonal Images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="image_transformer.html">image_transformer package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="image_transformer.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.image_processors.html">image_transformer.image_processors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.output_builders.html">image_transformer.output_builders package</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">image_transformer.pixels_processors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.constants">image_transformer.constants module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.image_transformer">image_transformer.image_transformer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.index">image_transformer.index module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.image_processors.html">image_transformer.image_processors package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.output_builders.html">image_transformer.output_builders package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">image_transformer.pixels_processors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.pixels_processors.average_pixels_processor">image_transformer.pixels_processors.average_pixels_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.pixels_processors.average_pixels_processor.AveragePixelsProcessor"><code class="docutils literal notranslate"><span class="pre">AveragePixelsProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.pixels_processors.average_pixels_processor.AveragePixelsProcessor.get_rgb_color_from_pixels"><code class="docutils literal notranslate"><span class="pre">AveragePixelsProcessor.get_rgb_color_from_pixels()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.pixels_processors.generic_pixels_processor">image_transformer.pixels_processors.generic_pixels_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.pixels_processors.generic_pixels_processor.GenericPixelsProcessor"><code class="docutils literal notranslate"><span class="pre">GenericPixelsProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.pixels_processors.generic_pixels_processor.GenericPixelsProcessor.get_rgb_color_from_pixels"><code class="docutils literal notranslate"><span class="pre">GenericPixelsProcessor.get_rgb_color_from_pixels()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.pixels_processors.most_frequent_pixels_processor">image_transformer.pixels_processors.most_frequent_pixels_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor"><code class="docutils literal notranslate"><span class="pre">MostFrequentPixelsProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.pixels_processors.most_frequent_pixels_processor.MostFrequentPixelsProcessor.get_rgb_color_from_pixels"><code class="docutils literal notranslate"><span class="pre">MostFrequentPixelsProcessor.get_rgb_color_from_pixels()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.pixels_processors.random_pixels_processor">image_transformer.pixels_processors.random_pixels_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.pixels_processors.random_pixels_processor.RandomPixelsProcessor"><code class="docutils literal notranslate"><span class="pre">RandomPixelsProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.pixels_processors.random_pixels_processor.RandomPixelsProcessor.get_rgb_color_from_pixels"><code class="docutils literal notranslate"><span class="pre">RandomPixelsProcessor.get_rgb_color_from_pixels()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.pixels_processors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
 </ul>
 
         </div>
@@ -78,8 +107,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
-          <li class="breadcrumb-item"><a href="image_transformer.html">image_transformer package</a></li>
       <li class="breadcrumb-item active">image_transformer.pixels_processors package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/image_transformer.pixels_processors.rst.txt" rel="nofollow"> View page source</a>

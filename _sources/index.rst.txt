@@ -1,10 +1,33 @@
-Image Enahncer documentation
-============================
+Image Transformer documentation
+===============================
 
-Welcome to Image Enhancer's Documentation.
+Welcome to Image Transformer's Documentation.
+
+Troubleshooting
+---------------
+
+If you encounter any issues during installation, please refer to the project's README file or open an issue on the project's GitHub page.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
 
-   modules.rst
+   installation.rst
+   quickstart-cli.rst
+   quickstart-program.rst
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples
+
+   example-1.rst
+   example-2.rst
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents
+
+   image_transformer.image_processors
+   image_transformer.output_builders
+   image_transformer.pixels_processors
+   image_transformer.utils

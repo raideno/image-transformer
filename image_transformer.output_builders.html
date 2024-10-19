@@ -42,26 +42,57 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-cli.html">Quickstart Cli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-program.html">Quickstart Program</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example-1.html">Simple Image to SVG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-2.html">Random Hexagonal Images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="image_transformer.html">image_transformer package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="image_transformer.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.image_processors.html">image_transformer.image_processors package</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">image_transformer.output_builders package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.pixels_processors.html">image_transformer.pixels_processors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.constants">image_transformer.constants module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.image_transformer">image_transformer.image_transformer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.index">image_transformer.index module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.image_processors.html">image_transformer.image_processors package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">image_transformer.output_builders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.output_builders.cairo_svg_output_builder">image_transformer.output_builders.cairo_svg_output_builder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder"><code class="docutils literal notranslate"><span class="pre">CairoSvgOutputBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_hexagon"><code class="docutils literal notranslate"><span class="pre">CairoSvgOutputBuilder.add_hexagon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_polygon"><code class="docutils literal notranslate"><span class="pre">CairoSvgOutputBuilder.add_polygon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.add_rectangle"><code class="docutils literal notranslate"><span class="pre">CairoSvgOutputBuilder.add_rectangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.cairo_svg_output_builder.CairoSvgOutputBuilder.save"><code class="docutils literal notranslate"><span class="pre">CairoSvgOutputBuilder.save()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.output_builders.generic_output_builder">image_transformer.output_builders.generic_output_builder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder"><code class="docutils literal notranslate"><span class="pre">GenericOutputBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.add_hexagon"><code class="docutils literal notranslate"><span class="pre">GenericOutputBuilder.add_hexagon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.add_polygon"><code class="docutils literal notranslate"><span class="pre">GenericOutputBuilder.add_polygon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.add_rectangle"><code class="docutils literal notranslate"><span class="pre">GenericOutputBuilder.add_rectangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.generic_output_builder.GenericOutputBuilder.save"><code class="docutils literal notranslate"><span class="pre">GenericOutputBuilder.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.output_builders.handmade_svg_output_builder">image_transformer.output_builders.handmade_svg_output_builder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder"><code class="docutils literal notranslate"><span class="pre">HandmadeSvgOutputBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_hexagon"><code class="docutils literal notranslate"><span class="pre">HandmadeSvgOutputBuilder.add_hexagon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_polygon"><code class="docutils literal notranslate"><span class="pre">HandmadeSvgOutputBuilder.add_polygon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.add_rectangle"><code class="docutils literal notranslate"><span class="pre">HandmadeSvgOutputBuilder.add_rectangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.output_builders.handmade_svg_output_builder.HandmadeSvgOutputBuilder.save"><code class="docutils literal notranslate"><span class="pre">HandmadeSvgOutputBuilder.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.output_builders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.pixels_processors.html">image_transformer.pixels_processors package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
 </ul>
 
         </div>
@@ -78,8 +109,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
-          <li class="breadcrumb-item"><a href="image_transformer.html">image_transformer package</a></li>
       <li class="breadcrumb-item active">image_transformer.output_builders package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/image_transformer.output_builders.rst.txt" rel="nofollow"> View page source</a>

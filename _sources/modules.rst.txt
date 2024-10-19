@@ -1,5 +1,5 @@
-src
-===
+image_transformer
+=================
 
 .. toctree::
    :maxdepth: 4

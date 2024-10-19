@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="image_transformer.output_builders package" href="image_transformer.output_builders.html" />
-    <link rel="prev" title="image_transformer package" href="image_transformer.html" /> 
+    <link rel="prev" title="Random Hexagonal Images" href="example-2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,26 +42,67 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-cli.html">Quickstart Cli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart-program.html">Quickstart Program</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example-1.html">Simple Image to SVG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-2.html">Random Hexagonal Images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="image_transformer.html">image_transformer package</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="image_transformer.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">image_transformer.image_processors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.output_builders.html">image_transformer.output_builders package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.pixels_processors.html">image_transformer.pixels_processors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.constants">image_transformer.constants module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.image_transformer">image_transformer.image_transformer module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer.index">image_transformer.index module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.html#module-image_transformer">Module contents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">image_transformer.image_processors package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.image_processors.generic_grid_image_processor">image_transformer.image_processors.generic_grid_image_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.image_processors.generic_grid_image_processor.GenericGridImageProcessor"><code class="docutils literal notranslate"><span class="pre">GenericGridImageProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.generic_grid_image_processor.GenericGridImageProcessor.approximate_number_of_grid_elements"><code class="docutils literal notranslate"><span class="pre">GenericGridImageProcessor.approximate_number_of_grid_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.generic_grid_image_processor.GenericGridImageProcessor.draw_grid_element_at"><code class="docutils literal notranslate"><span class="pre">GenericGridImageProcessor.draw_grid_element_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.generic_grid_image_processor.GenericGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">GenericGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.generic_grid_image_processor.GenericGridImageProcessor.from_pixel_coordinates_to_grid_coordinates"><code class="docutils literal notranslate"><span class="pre">GenericGridImageProcessor.from_pixel_coordinates_to_grid_coordinates()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.image_processors.hexagonal_grid_image_processor">image_transformer.image_processors.hexagonal_grid_image_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.image_processors.hexagonal_grid_image_processor.HexagonalGridImageProcessor"><code class="docutils literal notranslate"><span class="pre">HexagonalGridImageProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.hexagonal_grid_image_processor.HexagonalGridImageProcessor.approximate_number_of_grid_elements"><code class="docutils literal notranslate"><span class="pre">HexagonalGridImageProcessor.approximate_number_of_grid_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.hexagonal_grid_image_processor.HexagonalGridImageProcessor.draw_grid_element_at"><code class="docutils literal notranslate"><span class="pre">HexagonalGridImageProcessor.draw_grid_element_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.hexagonal_grid_image_processor.HexagonalGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">HexagonalGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.hexagonal_grid_image_processor.HexagonalGridImageProcessor.from_pixel_coordinates_to_grid_coordinates"><code class="docutils literal notranslate"><span class="pre">HexagonalGridImageProcessor.from_pixel_coordinates_to_grid_coordinates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.image_processors.square_grid_image_processor">image_transformer.image_processors.square_grid_image_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.image_processors.square_grid_image_processor.SquareGridImageProcessor"><code class="docutils literal notranslate"><span class="pre">SquareGridImageProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.square_grid_image_processor.SquareGridImageProcessor.approximate_number_of_grid_elements"><code class="docutils literal notranslate"><span class="pre">SquareGridImageProcessor.approximate_number_of_grid_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.square_grid_image_processor.SquareGridImageProcessor.draw_grid_element_at"><code class="docutils literal notranslate"><span class="pre">SquareGridImageProcessor.draw_grid_element_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.square_grid_image_processor.SquareGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">SquareGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.square_grid_image_processor.SquareGridImageProcessor.from_pixel_coordinates_to_grid_coordinates"><code class="docutils literal notranslate"><span class="pre">SquareGridImageProcessor.from_pixel_coordinates_to_grid_coordinates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.image_processors.triangle_grid_image_processor">image_transformer.image_processors.triangle_grid_image_processor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image_transformer.image_processors.triangle_grid_image_processor.TriangleGridImageProcessor"><code class="docutils literal notranslate"><span class="pre">TriangleGridImageProcessor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.triangle_grid_image_processor.TriangleGridImageProcessor.approximate_number_of_grid_elements"><code class="docutils literal notranslate"><span class="pre">TriangleGridImageProcessor.approximate_number_of_grid_elements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.triangle_grid_image_processor.TriangleGridImageProcessor.draw_grid_element_at"><code class="docutils literal notranslate"><span class="pre">TriangleGridImageProcessor.draw_grid_element_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.triangle_grid_image_processor.TriangleGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates"><code class="docutils literal notranslate"><span class="pre">TriangleGridImageProcessor.from_grid_coordinates_to_center_in_pixel_coordinates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image_transformer.image_processors.triangle_grid_image_processor.TriangleGridImageProcessor.from_pixel_coordinates_to_grid_coordinates"><code class="docutils literal notranslate"><span class="pre">TriangleGridImageProcessor.from_pixel_coordinates_to_grid_coordinates()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.image_processors">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.output_builders.html">image_transformer.output_builders package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.pixels_processors.html">image_transformer.pixels_processors package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a></li>
 </ul>
 
         </div>
@@ -78,8 +119,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
-          <li class="breadcrumb-item"><a href="image_transformer.html">image_transformer package</a></li>
       <li class="breadcrumb-item active">image_transformer.image_processors package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/image_transformer.image_processors.rst.txt" rel="nofollow"> View page source</a>
@@ -448,7 +487,7 @@ from the image_processors module.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="image_transformer.html" class="btn btn-neutral float-left" title="image_transformer package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example-2.html" class="btn btn-neutral float-left" title="Random Hexagonal Images" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="image_transformer.output_builders.html" class="btn btn-neutral float-right" title="image_transformer.output_builders package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
