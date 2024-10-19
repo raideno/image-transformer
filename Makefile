@@ -12,5 +12,5 @@ linting:
 	poetry run tox -e lint
 
 documentation:
-	poetry run sphinx-apidoc -o docs/ src/
+	poetry run sphinx-apidoc -o docs/ image_transformer/
 	poetry run sphinx-build -b html docs docs/_build

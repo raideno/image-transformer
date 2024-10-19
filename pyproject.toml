@@ -12,11 +12,11 @@ repository = "https://github.com/raideno/image-transformer"
 keywords = ["image-processing", "image-enhancement", "image-transformer"]
 readme = "README.md"
 packages = [
-    {include = "image_transformer", from = "src"}
+    {include = "image_transformer", from = "."}
 ]
 include = [
-    { path = "src/image_transformer/configurations.toml", format = "sdist" },
-    { path = "src/image_transformer/configurations.toml", format = "wheel" },
+    { path = "image_transformer/configurations.toml", format = "sdist" },
+    { path = "image_transformer/configurations.toml", format = "wheel" },
     { path = "README.md", format = "sdist" },
     { path = "README.md", format = "wheel" },
 ]
