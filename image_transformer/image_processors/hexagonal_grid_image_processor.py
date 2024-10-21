@@ -50,10 +50,10 @@ class HexagonalGridImageProcessor(GenericGridImageProcessor):
             [-1 / 3, np.sqrt(3) / 3],
         ])
         
-        result = conversion_matrix @ pixel_matrix / self.hexagon_size
+        result = np.round(conversion_matrix @ pixel_matrix / self.hexagon_size).astype(int)
         
-        q = int(round(result[0, 0]))
-        r = int(round(result[1, 0]))
+        q = result[0, 0]
+        r = result[1, 0]
 
         return (q, r)
 

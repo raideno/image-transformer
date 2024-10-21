@@ -63,8 +63,8 @@ class CairoSvgOutputBuilder(GenericOutputBuilder):
         hexagon_vertices = []
         for i in range(6):
             angle = np.pi / 3 * i
-            x_vertex = x + size * np.cos(angle)
-            y_vertex = y + size * np.sin(angle)
+            x_vertex = x + (size - 1) * np.cos(angle)
+            y_vertex = y + (size - 0.5) * np.sin(angle)
             hexagon_vertices.append((x_vertex, y_vertex))
 
         self.context.move_to(*hexagon_vertices[0])
