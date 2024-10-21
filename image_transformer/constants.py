@@ -24,3 +24,7 @@ outputs_builders: dict[str, GenericOutputBuilder] = {
     "handmade-svg": HandmadeSvgOutputBuilder,
     "cairo-svg": CairoSvgOutputBuilder
 }
+
+distributions: dict[str, str] = {
+    "normal": "normal"
+}
