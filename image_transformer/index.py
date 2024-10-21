@@ -64,7 +64,7 @@ def main() -> None:
         arguments_parser=arguments_parser
     )
     
-    image_path = arguments.image_path
+    image_path = arguments.image
     image_processor = arguments.grid
     output_builder = arguments.builder
     pixels_processor = arguments.pixels
