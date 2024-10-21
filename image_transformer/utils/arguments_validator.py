@@ -30,15 +30,15 @@ def validate_and_parse_arguments(raw_arguments: list[str], arguments_parser: arg
     _verbose = arguments.verbose
     
     if size < 1 or size > 100:
-        print(f"[image-enhancer](error): the size '{size}' is not valid. It must be between 1 and 100.")
+        print(f"[image-transformer](error): the size '{size}' is not valid. It must be between 1 and 100.")
         sys.exit(1)
     
     if not os.path.isfile(image_path):
-        print(f"[image-enhancer](error): the provided path '{image_path}' is not a valid file.")
+        print(f"[image-transformer](error): the provided path '{image_path}' is not a valid file.")
         sys.exit(1)
     
     if not os.path.isdir(output_directory):
-        print(f"[image-enhancer](error): the provided output path '{output_directory}' is not a valid directory.")
+        print(f"[image-transformer](error): the provided output path '{output_directory}' is not a valid directory.")
         sys.exit(1)
         
     return arguments

@@ -1,5 +1,5 @@
 """
-This module provides a factory function to create an argument parser for the image-enhancer program.
+This module provides a factory function to create an argument parser for the image-transformer program.
 The parser handles command-line arguments for processing images and converting them into SVG format.
 """
 
@@ -12,7 +12,7 @@ def arguments_parser_factory(
     configurations: dict
 ) -> argparse.ArgumentParser:
     """
-    Creates and configures an ArgumentParser for the image-enhancer program.
+    Creates and configures an ArgumentParser for the image-transformer program.
 
     Parameters:
         image_processors_keys (list[str]): List of valid keys for image processors.
@@ -23,7 +23,7 @@ def arguments_parser_factory(
         argparse.ArgumentParser: Configured argument parser.
     """
     parser = argparse.ArgumentParser(
-        prog="image-enhancer",
+        prog="image-transformer",
         description="Transform your images into svg",
     )
 

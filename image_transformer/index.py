@@ -1,5 +1,5 @@
 """
-This module provides the main entry point for the image-enhancer program. It parses command-line arguments,
+This module provides the main entry point for the image-transformer program. It parses command-line arguments,
 loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.
 """
 
@@ -26,7 +26,7 @@ CONFIGURATION_FILE_NAME = "configurations.toml"
 
 def main() -> None:
     """
-    Main function to run the image-enhancer program.
+    Main function to run the image-transformer program.
     This function performs the following steps:
     
     1. Parses command-line arguments to get the image path, processors, size, output directory, and verbosity.
@@ -92,12 +92,12 @@ def main() -> None:
     number_of_grid_elements = grid_image_processor.approximate_number_of_grid_elements(image.width, image.height)
 
     if verbose:
-        print("[image-enhancer]: welcome to the program!")
-        print(f"[image-enhancer](width): {image.width}")
-        print(f"[image-enhancer](height): {image.height}")
-        print(f"[image-enhancer](#pixels): {image.width * image.height}")
+        print("[image-transformer]: welcome to the program!")
+        print(f"[image-transformer](width): {image.width}")
+        print(f"[image-transformer](height): {image.height}")
+        print(f"[image-transformer](#pixels): {image.width * image.height}")
     
-    with alive_bar(image.width * image.height + number_of_grid_elements, title="[image-enhancer](processing)", disable=not verbose) as progress_bar:
+    with alive_bar(image.width * image.height + number_of_grid_elements, title="[image-transformer](processing)", disable=not verbose) as progress_bar:
         callback_function = lambda step_name, step_size: progress_bar() # pylint: disable=not-callable
 
         image_transformer.transform_and_save(
