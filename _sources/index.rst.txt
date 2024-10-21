@@ -3,6 +3,17 @@ Image Transformer documentation
 
 Welcome to Image Transformer's Documentation.
 
+.. list-table:: Examples
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Orignal Image
+     - Transformed Image
+   * - .. image:: ../data/mona-lisa.png
+     - .. image:: ../data/mona-lisa.svg
+   * - .. image:: ../data/testing-image.jpg
+     - .. image:: ../data/testing-image.svg
+
 Troubleshooting
 ---------------
 

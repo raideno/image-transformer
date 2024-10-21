@@ -84,7 +84,7 @@
              
   <h1>Source code for image_transformer.index</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This module provides the main entry point for the image-enhancer program. It parses command-line arguments,</span>
+<span class="sd">This module provides the main entry point for the image-transformer program. It parses command-line arguments,</span>
 <span class="sd">loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -113,7 +113,7 @@
 <a class="viewcode-back" href="../../image_transformer.html#image_transformer.index.main">[docs]</a>
 <span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Main function to run the image-enhancer program.</span>
+<span class="sd">    Main function to run the image-transformer program.</span>
 <span class="sd">    This function performs the following steps:</span>
 <span class="sd">    </span>
 <span class="sd">    1. Parses command-line arguments to get the image path, processors, size, output directory, and verbosity.</span>
@@ -179,12 +179,12 @@
     <span class="n">number_of_grid_elements</span> <span class="o">=</span> <span class="n">grid_image_processor</span><span class="o">.</span><span class="n">approximate_number_of_grid_elements</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[image-enhancer]: welcome to the program!&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](width): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](height): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](#pixels): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[image-transformer]: welcome to the program!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](width): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](height): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](#pixels): </span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    <span class="k">with</span> <span class="n">alive_bar</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">number_of_grid_elements</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;[image-enhancer](processing)&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">)</span> <span class="k">as</span> <span class="n">progress_bar</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">alive_bar</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">number_of_grid_elements</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;[image-transformer](processing)&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">)</span> <span class="k">as</span> <span class="n">progress_bar</span><span class="p">:</span>
         <span class="n">callback_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">step_name</span><span class="p">,</span> <span class="n">step_size</span><span class="p">:</span> <span class="n">progress_bar</span><span class="p">()</span> <span class="c1"># pylint: disable=not-callable</span>
 
         <span class="n">image_transformer</span><span class="o">.</span><span class="n">transform_and_save</span><span class="p">(</span>

@@ -84,7 +84,7 @@
              
   <h1>Source code for image_transformer.utils.arguments_parser</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This module provides a factory function to create an argument parser for the image-enhancer program.</span>
+<span class="sd">This module provides a factory function to create an argument parser for the image-transformer program.</span>
 <span class="sd">The parser handles command-line arguments for processing images and converting them into SVG format.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -99,7 +99,7 @@
     <span class="n">configurations</span><span class="p">:</span> <span class="nb">dict</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Creates and configures an ArgumentParser for the image-enhancer program.</span>
+<span class="sd">    Creates and configures an ArgumentParser for the image-transformer program.</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        image_processors_keys (list[str]): List of valid keys for image processors.</span>
@@ -110,7 +110,7 @@
 <span class="sd">        argparse.ArgumentParser: Configured argument parser.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
-        <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;image-enhancer&quot;</span><span class="p">,</span>
+        <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;image-transformer&quot;</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Transform your images into svg&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 

@@ -117,15 +117,15 @@
     <span class="n">_verbose</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">verbose</span>
     
     <span class="k">if</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](error): the size &#39;</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#39; is not valid. It must be between 1 and 100.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](error): the size &#39;</span><span class="si">{</span><span class="n">size</span><span class="si">}</span><span class="s2">&#39; is not valid. It must be between 1 and 100.&quot;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](error): the provided path &#39;</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#39; is not a valid file.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](error): the provided path &#39;</span><span class="si">{</span><span class="n">image_path</span><span class="si">}</span><span class="s2">&#39; is not a valid file.&quot;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">output_directory</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-enhancer](error): the provided output path &#39;</span><span class="si">{</span><span class="n">output_directory</span><span class="si">}</span><span class="s2">&#39; is not a valid directory.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[image-transformer](error): the provided output path &#39;</span><span class="si">{</span><span class="n">output_directory</span><span class="si">}</span><span class="s2">&#39; is not a valid directory.&quot;</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         
     <span class="k">return</span> <span class="n">arguments</span></div>
