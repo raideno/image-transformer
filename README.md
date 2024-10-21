@@ -18,7 +18,15 @@ pip install image-transformer
 
 Example usage:
 
+```bash
+image-transformer mona-lisa.png --verbose
 ```
+
+The parameter `--verbose` is used such that you have more feedback on the running of the command.
+
+Assuming you have an file in the same directory from where you are running the command named `mona-lisa.png` containing an image. 
+
+```bash
 image-transformer [--help] [-g {hexagonal,square,triangle}] [-p {random,average,frequent}] [-s SIZE] image_path
 ```
 
@@ -40,7 +48,7 @@ def main():
     hexagon_size = 13
     output_image_path = "result.svg"
     # NOTE: assuming the image exists
-    my_image_path = "./testing-image.jpg"
+    my_image_path = "./mona-lisa.png"
 
     image = Image.open(my_image_path)
 
@@ -69,18 +77,18 @@ if __name__ == "__main__":
     </tr>
     <tr>
         <td>
-            <img src="data/testing-image.jpg" alt="Original Image">
+            <img src="data/mona-lisa.png" alt="Original Image">
         </td>
         <td>
-            <img src="data/testing-image.svg" alt="Generated SVG">
+            <img src="data/mona-lisa.svg" alt="Generated SVG">
         </td>
     </tr>
     <tr>
         <td>
-            <img src="data/simple-image.png" alt="Original Image">
+            <img src="data/testing-image.jpg" alt="Original Image">
         </td>
         <td>
-            <img src="data/simple-image.svg" alt="Generated SVG">
+            <img src="data/testing-image.svg" alt="Generated SVG">
         </td>
     </tr>
 </table>
