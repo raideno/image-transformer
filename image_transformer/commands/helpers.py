@@ -1,3 +1,7 @@
+"""
+This module contains helper dictionaries for image generation and transformation commands.
+"""
+
 helpers = {
     "image_generator_command": {
         "help": "Generate an image with specified dimensions, colors, and processing options.",

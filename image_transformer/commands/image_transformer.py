@@ -1,3 +1,8 @@
+"""
+This module defines a command-line interface (CLI) for transforming images using various processors and builders.
+It utilizes the Click library to handle command-line arguments and options.
+"""
+
 import os
 import click
 
@@ -21,6 +26,18 @@ def image_transformer_command_factory(
     pixels_processors_keys: list[str],
     outputs_builders_keys: list[str],
 ):
+    """
+    Factory function to create the image transformer command.
+
+    Parameters:
+        configurations (dict): Configuration dictionary containing default values.
+        image_processors_keys (list[str]): List of available image processor keys.
+        pixels_processors_keys (list[str]): List of available pixels processor keys.
+        outputs_builders_keys (list[str]): List of available output builder keys.
+
+    Returns:
+        function: The image transformer command function.
+    """
     @click.command(
         name="transform",
         help=helpers["image_transformer_command"]["help"]
@@ -75,6 +92,18 @@ def image_transformer_command_factory(
         output_directory,
         verbose,
     ):
+        """
+        Command to transform an image using specified processors and builders.
+
+        Parameters:
+            image_path (str): Path to the input image.
+            image_processor (str): Key for the image processor to use.
+            pixels_processor (str): Key for the pixels processor to use.
+            output_builder (str): Key for the output builder to use.
+            size (int): Size parameter for the image processor.
+            output_directory (str): Directory to save the output image.
+            verbose (bool): Flag to enable verbose output.
+        """
         image = load_image(image_path)
         
         image_transformer = ImageTransformer.from_pil_image(image)

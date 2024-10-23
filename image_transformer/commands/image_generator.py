@@ -1,15 +1,18 @@
+"""
+This module provides a command-line interface (CLI) command for generating images with specified dimensions, colors, and processing options.
+The command is created using the Click library and allows users to specify various parameters for image generation.
+"""
+
 import os
 import click
 
 import numpy as np
 
-from image_transformer.utils import ClickColor, hex_to_rgb_color_converter
-
 from alive_progress import alive_bar
 
-from image_transformer.constants import image_processors, pixels_processors, outputs_builders
+from image_transformer.utils import ClickColor, hex_to_rgb_color_converter
 
-from image_transformer import ImageTransformer
+from image_transformer import ImageTransformer, image_processors, outputs_builders
 
 from image_transformer.commands.helpers import helpers
 
@@ -22,9 +25,21 @@ GENERATED_IMAGE_NAME = "result"
 def image_generator_command_factory(
     configurations: dict,
     image_processors_keys: list[str],
-    pixels_processors_keys: list[str],
+    _pixels_processors_keys: list[str],
     outputs_builders_keys: list[str]
 ):
+    """
+    Factory function to create the image generator command.
+
+    Parameters:
+        configurations (dict): Configuration dictionary containing default values for the command options.
+        image_processors_keys (list[str]): List of available image processor keys.
+        pixels_processors_keys (list[str]): List of available pixels processor keys.
+        outputs_builders_keys (list[str]): List of available output builder keys.
+
+    Returns:
+        function: The image generator command function.
+    """
     @click.command(
         name="generate",
         help="Generate an image with specified dimensions, colors, and processing options."
@@ -90,6 +105,19 @@ def image_generator_command_factory(
         output_directory,
         verbose,
     ):
+        """
+        Command to generate an image with specified dimensions, colors, and processing options.
+
+        Parameters:
+            width (int): Width of the generated image.
+            height (int): Height of the generated image.
+            hex_color (tuple): Tuple of hex color values for the image.
+            image_processor (str): Key for the image processor to use.
+            output_builder (str): Key for the output builder to use.
+            size (int): Size parameter for the image processor.
+            output_directory (str): Directory to save the generated image.
+            verbose (bool): Flag to enable verbose output.
+        """
         hex_colors = hex_color
         
         image_array = np.zeros((height, width, 3), dtype=np.uint8)
