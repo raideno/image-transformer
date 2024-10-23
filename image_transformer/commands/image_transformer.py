@@ -3,7 +3,7 @@ import click
 
 from alive_progress import alive_bar
 
-from image_transformer.constants import image_processors, pixels_processors, outputs_builders, distributions
+from image_transformer.constants import image_processors, pixels_processors, outputs_builders
 
 from image_transformer import ImageTransformer
 
@@ -24,6 +24,7 @@ def image_transformer_command_factory(
     @click.command("transform")
     
     @click.option('--image-path', type=click.Path(exists=True), required=True)
+    
     @click.option('--image-processor', type=click.Choice(image_processors_keys), default=configurations["defaults"]["image-processor"], required=True)
     @click.option('--pixels-processor', type=click.Choice(pixels_processors_keys), default=configurations["defaults"]["pixels-processor"], required=True)
     @click.option('--output-builder', type=click.Choice(outputs_builders_keys), default=configurations["defaults"]["output-builder"], required=True)

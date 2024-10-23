@@ -7,7 +7,7 @@ from image_transformer.commands import initialize_commands
 
 from importlib import resources
 
-from image_transformer.constants import image_processors, pixels_processors, outputs_builders, distributions
+from image_transformer.constants import image_processors, pixels_processors, outputs_builders
 
 from image_transformer.utils import load_configurations
 
@@ -23,8 +23,7 @@ def main():
         configurations,
         image_processors,
         pixels_processors,
-        outputs_builders,
-        distributions
+        outputs_builders
     )
 
     commands()

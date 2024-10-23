@@ -8,8 +8,6 @@ from image_transformer.pixels_processors import RandomPixelsProcessor, AveragePi
 
 from image_transformer.image_processors import TriangleGridImageProcessor, HexagonalGridImageProcessor, SquareGridImageProcessor, GenericGridImageProcessor
 
-from image_transformer.distributions import GenericDistribution, NormalDistribution, PoissonDistribution
-
 image_processors: dict[str, GenericGridImageProcessor] = {
     "hexagonal": HexagonalGridImageProcessor,
     "square": SquareGridImageProcessor,
@@ -25,9 +23,4 @@ pixels_processors: dict[str, GenericPixelsProcessor] = {
 outputs_builders: dict[str, GenericOutputBuilder] = {
     "handmade-svg": HandmadeSvgOutputBuilder,
     "cairo-svg": CairoSvgOutputBuilder
-}
-
-distributions: dict[str, GenericDistribution] = {
-    "normal": NormalDistribution,
-    "poisson": PoissonDistribution
 }

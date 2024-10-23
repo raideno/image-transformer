@@ -11,15 +11,13 @@ def initialize_commands(
     configurations: dict,
     image_processors_keys: list[str],
     pixels_processors_keys: list[str],
-    outputs_builders_keys: list[str],
-    distributions_keys: list[str],
+    outputs_builders_keys: list[str]
 ):
     image_generator_command = image_generator_command_factory(
         configurations,
         image_processors_keys,
         pixels_processors_keys,
         outputs_builders_keys,
-        distributions_keys
     )
     
     image_transformer_command = image_transformer_command_factory(
