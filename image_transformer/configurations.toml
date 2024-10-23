@@ -5,6 +5,6 @@ image-processor = "hexagonal"
 pixels-processor = "most-frequent"
 output-builder = "cairo-svg"
 verbose = true
-hex-colors = ["FF0000", "FF7F00", "FFFF00", "7FFF00", "00FF00", "00FF7F", "00FFFF", "007FFF", "0000FF", "7F00FF", "FF00FF", "FF007F"]
+hex-colors = ["F3696E","F47062","F47756","F57E4A","F5853E","F68D32","F69426","F79B1A","F7A20E","F8A902"]
 height = 100
 width = 100
