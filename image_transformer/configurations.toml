@@ -4,3 +4,7 @@ output-directory = "./"
 image-processor = "hexagonal"
 pixels-processor = "most-frequent"
 output-builder = "cairo-svg"
+verbose = true
+hex-colors = ["F3696E","F47062","F47756","F57E4A","F5853E","F68D32","F69426","F79B1A","F7A20E","F8A902"]
+height = 100
+width = 100

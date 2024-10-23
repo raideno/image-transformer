@@ -3,6 +3,8 @@ Image Transformer documentation
 
 Welcome to Image Transformer's Documentation.
 
+Please for an up to date documentation refer to the project's `GitHub page <https://github.com/raideno/image-transformer>`_..
+
 .. list-table:: Examples
    :widths: 50 50
    :header-rows: 1
@@ -17,7 +19,7 @@ Welcome to Image Transformer's Documentation.
 Troubleshooting
 ---------------
 
-If you encounter any issues during installation, please refer to the project's README file or open an issue on the project's GitHub page.
+If you encounter any issues during installation, please refer to the project's README file or open an issue on the project's `GitHub page <https://github.com/raideno/image-transformer>`_.
 
 .. toctree::
    :maxdepth: 2

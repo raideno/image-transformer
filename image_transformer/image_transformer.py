@@ -8,9 +8,9 @@ import numpy as np
 
 from PIL import Image
 
-from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
-from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
-from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
+from image_transformer.output_builders import GenericOutputBuilder
+from image_transformer.pixels_processors import GenericPixelsProcessor
+from image_transformer.image_processors import GenericGridImageProcessor
 
 class ImageTransformer:    
     """

@@ -6,7 +6,12 @@
 
 # Image Transformer
 
-This Python application reads a .png image and generates a scalable .svg version. The .svg file can be used as a high-resolution wallpaper. The application samples the colors of each grid element (hexagon, square, etc) to reproduce the same picture.
+Image Transformer is a CLI tool and a python module that can do two things:
+
+- Reads a .png image and generate a scalable .svg version of that image based on a hexagonal, triangular or square grid (or any other grid you which to implement).
+- Generate a svg image from a color palette with the grid of your choice.
+
+The a scalable .svg version generated or transformer can be used as a high-resolution wallpaper.
 
 ## Install
 
@@ -16,21 +21,53 @@ pip install image-transformer
 
 ## How to use as a CLI tool ?
 
-Example usage:
+### The `transform` command
+
+Command to transform an image using specified processors and save the output. This command allows you to transform an image using various processors for the image, pixels, and output. The transformed image is then saved to the specified output directory.
 
 ```bash
-image-transformer mona-lisa.png --verbose
+image-transformer transform mona-lisa.png
 ```
 
-The parameter `--verbose` is used such that you have more feedback on the running of the command.
+Below all the available parameters:
 
-Assuming you have an file in the same directory from where you are running the command named `mona-lisa.png` containing an image. 
+| Parameter                | Is Required | Default         | Description                                                                               |
+| ------------------------ | ----------- | --------------- | ----------------------------------------------------------------------------------------- |
+| `--image-path`           | Yes         |                 | Specify the path to the image to be transformed.                                          |
+| `--image-processor`      | Yes         | `hexagonal`     | Type of grid to use (options: `hexagonal`, `square`, `triangle`).                         |
+| `--pixels-processor`     | Yes         | `most-frequent` | Specify the pixels processor to use (options: `random`, `most-frequent`, `average`, etc). |
+| `--output-builder`       | Yes         | `cairo-svg`     | Specify the output builder to use.                                                        |
+| `--size`                 | Yes         | `10`            | Size of the grid cells. Default is `10`.                                                  |
+| `--output-directory`     | Yes         | `./`            | Specify the directory where the output image will be saved.                               |
+| `--verbose/--no-verbose` | No          | `True`          | Enable or disable verbose output.                                                         |
+
+**Note:** for more details about all the available params use the following command: `image-transformer transform --help`.
+
+Assuming you have an file in the same directory from where you are running the command named `mona-lisa.png` containing an image.
+
+### The `generate` command
+
+Generate an image with specified dimensions, colors, and processing options.
 
 ```bash
-image-transformer [--help] [-g {hexagonal,square,triangle}] [-p {random,average,frequent}] [-s SIZE] image_path
+image-transformer generate --width 200 --height 100
 ```
 
-**Note:** for more details about all the available params use the following command: `image-transformer --help`.
+Below all the available parameters:
+
+| Parameter                | Is Required | Default                | Description                                                                               |
+| ------------------------ | ----------- | ---------------------- | ----------------------------------------------------------------------------------------- |
+| `--image-processor`      | Yes         | `hexagonal`            | Type of grid to use (options: `hexagonal`, `square`, `triangle`). Default is `hexagonal`. |
+| `--size`                 | Yes         | `10`                   | Size of the grid cells. Default is `10`.                                                  |
+| `--width`                | Yes         | `100`                  | Specify the width of the generated image.                                                 |
+| `--height`               | Yes         | `100`                  | Specify the height of the generated image.                                                |
+| `--hex-color`            | Yes         | A random color palette | Specify the hex color code for the image background.                                      |
+| `--output-builder`       | Yes         | `cairo-svg`            | Specify the output builder to use.                                                        |
+| `--output-directory`     | Yes         | `./`                   | Specify the directory where the output image will be saved.                               |
+| `--verbose/--no-verbose` | No          | `True`                 | Enable or disable verbose output.                                                         |
+| `--help`                 | No          |                        | Show help message and exit.                                                               |
+
+**Note:** for more details about all the available params use the following command: `image-transformer generate --help`.
 
 ## How to use in a program ?
 
@@ -70,6 +107,8 @@ if __name__ == "__main__":
 
 ## Examples
 
+### Image Transformation
+
 <table>
     <tr>
         <td>Original Image</td>
@@ -93,7 +132,20 @@ if __name__ == "__main__":
     </tr>
 </table>
 
-## Development
+### Image Generation
+
+<table>
+    <tr>
+        <td>Generated Image</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="data/generated.svg" alt="Generated SVG">
+        </td>
+    </tr>
+</table>
+
+## Development and Contributions
 
 Below are notes for development only. You don't need to give it a look unless you want to contribute or build your own library.
 
