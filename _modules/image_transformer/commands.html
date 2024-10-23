@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>image_transformer.index &mdash; Image Transformer 0.4.2 documentation</title>
+  <title>image_transformer.commands &mdash; Image Transformer 0.4.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -73,7 +73,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">image_transformer.index</li>
+      <li class="breadcrumb-item active">image_transformer.commands</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -82,46 +82,67 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for image_transformer.index</h1><div class="highlight"><pre>
+  <h1>Source code for image_transformer.commands</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This module provides the main entry point for the image-transformer program. It parses command-line arguments,</span>
-<span class="sd">loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</span>
+<span class="sd">Module for initializing image transformation commands.</span>
+<span class="sd">This module provides functionality to initialize and register commands</span>
+<span class="sd">for image generation and transformation based on provided configurations</span>
+<span class="sd">and processor keys.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">resources</span>
-
-<span class="kn">from</span> <span class="nn">image_transformer.commands</span> <span class="kn">import</span> <span class="n">initialize_commands</span>
-
-<span class="kn">from</span> <span class="nn">image_transformer.constants</span> <span class="kn">import</span> <span class="n">image_processors</span><span class="p">,</span> <span class="n">pixels_processors</span><span class="p">,</span> <span class="n">outputs_builders</span>
-
-<span class="kn">from</span> <span class="nn">image_transformer.utils</span> <span class="kn">import</span> <span class="n">load_configurations</span>
-
-<span class="n">CONFIGURATION_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;configurations.toml&quot;</span>
-
-<div class="viewcode-block" id="main">
-<a class="viewcode-back" href="../../image_transformer.html#image_transformer.index.main">[docs]</a>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Main function to execute the image transformation process.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">configurations</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">import</span> <span class="nn">click</span>
 
-    <span class="k">with</span> <span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;image_transformer&quot;</span><span class="p">,</span> <span class="n">CONFIGURATION_FILE_NAME</span><span class="p">)</span> <span class="k">as</span> <span class="n">configuration_file_path</span><span class="p">:</span>
-        <span class="n">configurations</span> <span class="o">=</span> <span class="n">load_configurations</span><span class="p">(</span><span class="n">configuration_file_path</span><span class="p">)</span>
-        
-    <span class="n">commands</span> <span class="o">=</span> <span class="n">initialize_commands</span><span class="p">(</span>
+<span class="kn">from</span> <span class="nn">image_transformer.commands.helpers</span> <span class="kn">import</span> <span class="n">helpers</span>
+<span class="kn">from</span> <span class="nn">image_transformer.commands.image_generator</span> <span class="kn">import</span> <span class="n">image_generator_command_factory</span>
+<span class="kn">from</span> <span class="nn">image_transformer.commands.image_transformer</span> <span class="kn">import</span> <span class="n">image_transformer_command_factory</span>
+
+<span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">commands</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that groups commands.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="initialize_commands">
+<a class="viewcode-back" href="../../image_transformer.commands.html#image_transformer.commands.initialize_commands">[docs]</a>
+<span class="k">def</span> <span class="nf">initialize_commands</span><span class="p">(</span>
+    <span class="n">configurations</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">image_processors_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">pixels_processors_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">outputs_builders_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize and register image transformation commands.</span>
+<span class="sd">    This function creates and registers commands for image generation and</span>
+<span class="sd">    transformation using the provided configurations and processor keys.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        configurations (dict): Configuration settings for the commands.</span>
+<span class="sd">        image_processors_keys (list[str]): List of keys for image processors.</span>
+<span class="sd">        pixels_processors_keys (list[str]): List of keys for pixel processors.</span>
+<span class="sd">        outputs_builders_keys (list[str]): List of keys for output builders.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        commands: The registered commands.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">image_generator_command</span> <span class="o">=</span> <span class="n">image_generator_command_factory</span><span class="p">(</span>
         <span class="n">configurations</span><span class="p">,</span>
-        <span class="n">image_processors</span><span class="p">,</span>
-        <span class="n">pixels_processors</span><span class="p">,</span>
-        <span class="n">outputs_builders</span>
+        <span class="n">image_processors_keys</span><span class="p">,</span>
+        <span class="n">pixels_processors_keys</span><span class="p">,</span>
+        <span class="n">outputs_builders_keys</span><span class="p">,</span>
     <span class="p">)</span>
+    
+    <span class="n">image_transformer_command</span> <span class="o">=</span> <span class="n">image_transformer_command_factory</span><span class="p">(</span>
+        <span class="n">configurations</span><span class="p">,</span>
+        <span class="n">image_processors_keys</span><span class="p">,</span>
+        <span class="n">pixels_processors_keys</span><span class="p">,</span>
+        <span class="n">outputs_builders_keys</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="n">commands</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">image_generator_command</span><span class="p">)</span>
+    <span class="n">commands</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">image_transformer_command</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">commands</span></div>
 
-    <span class="n">commands</span><span class="p">()</span></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
            </div>

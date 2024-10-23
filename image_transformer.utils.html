@@ -59,14 +59,8 @@
 <li class="toctree-l1"><a class="reference internal" href="image_transformer.pixels_processors.html">image_transformer.pixels_processors package</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">image_transformer.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.utils.arguments_parser">image_transformer.utils.arguments_parser module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#image_transformer.utils.arguments_parser.arguments_parser_factory"><code class="docutils literal notranslate"><span class="pre">arguments_parser_factory()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.utils.arguments_validator">image_transformer.utils.arguments_validator module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#image_transformer.utils.arguments_validator.validate_and_parse_arguments"><code class="docutils literal notranslate"><span class="pre">validate_and_parse_arguments()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#image-transformer-utils-arguments-parser-module">image_transformer.utils.arguments_parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-transformer-utils-arguments-validator-module">image_transformer.utils.arguments_validator module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-image_transformer.utils.configurations_loader">image_transformer.utils.configurations_loader module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#image_transformer.utils.configurations_loader.load_configurations"><code class="docutils literal notranslate"><span class="pre">load_configurations()</span></code></a></li>
 </ul>
@@ -109,58 +103,11 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-image_transformer.utils.arguments_parser">
-<span id="image-transformer-utils-arguments-parser-module"></span><h2>image_transformer.utils.arguments_parser module<a class="headerlink" href="#module-image_transformer.utils.arguments_parser" title="Link to this heading"></a></h2>
-<p>This module provides a factory function to create an argument parser for the image-transformer program.
-The parser handles command-line arguments for processing images and converting them into SVG format.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="image_transformer.utils.arguments_parser.arguments_parser_factory">
-<span class="sig-prename descclassname"><span class="pre">image_transformer.utils.arguments_parser.</span></span><span class="sig-name descname"><span class="pre">arguments_parser_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_processors_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixels_processors_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs_builders_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configurations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ArgumentParser</span></span></span><a class="reference internal" href="_modules/image_transformer/utils/arguments_parser.html#arguments_parser_factory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.utils.arguments_parser.arguments_parser_factory" title="Link to this definition"></a></dt>
-<dd><p>Creates and configures an ArgumentParser for the image-transformer program.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>image_processors_keys</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of valid keys for image processors.</p></li>
-<li><p><strong>pixels_processors_keys</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of valid keys for pixel processors.</p></li>
-<li><p><strong>configurations</strong> (<em>dict</em>) – Dictionary containing default configuration values.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Configured argument parser.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>argparse.ArgumentParser</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="image-transformer-utils-arguments-parser-module">
+<h2>image_transformer.utils.arguments_parser module<a class="headerlink" href="#image-transformer-utils-arguments-parser-module" title="Link to this heading"></a></h2>
 </section>
-<section id="module-image_transformer.utils.arguments_validator">
-<span id="image-transformer-utils-arguments-validator-module"></span><h2>image_transformer.utils.arguments_validator module<a class="headerlink" href="#module-image_transformer.utils.arguments_validator" title="Link to this heading"></a></h2>
-<p>This module contains utility functions for validating and parsing command-line arguments.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="image_transformer.utils.arguments_validator.validate_and_parse_arguments">
-<span class="sig-prename descclassname"><span class="pre">image_transformer.utils.arguments_validator.</span></span><span class="sig-name descname"><span class="pre">validate_and_parse_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments_parser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ArgumentParser</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Namespace</span></span></span><a class="reference internal" href="_modules/image_transformer/utils/arguments_validator.html#validate_and_parse_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.utils.arguments_validator.validate_and_parse_arguments" title="Link to this definition"></a></dt>
-<dd><p>Validates and parses command-line arguments.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>raw_arguments</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of raw command-line arguments.</p></li>
-<li><p><strong>arguments_parser</strong> (<em>argparse.ArgumentParser</em>) – The argument parser configured with the expected arguments.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The parsed arguments as a Namespace object.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>argparse.Namespace</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>SystemExit</strong> – If any of the validation checks fail, the function will print an error message and exit the program.</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="image-transformer-utils-arguments-validator-module">
+<h2>image_transformer.utils.arguments_validator module<a class="headerlink" href="#image-transformer-utils-arguments-validator-module" title="Link to this heading"></a></h2>
 </section>
 <section id="module-image_transformer.utils.configurations_loader">
 <span id="image-transformer-utils-configurations-loader-module"></span><h2>image_transformer.utils.configurations_loader module<a class="headerlink" href="#module-image_transformer.utils.configurations_loader" title="Link to this heading"></a></h2>

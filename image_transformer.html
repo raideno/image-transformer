@@ -204,14 +204,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="image_transformer.utils.html">image_transformer.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#module-image_transformer.utils.arguments_parser">image_transformer.utils.arguments_parser module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.utils.html#image_transformer.utils.arguments_parser.arguments_parser_factory"><code class="docutils literal notranslate"><span class="pre">arguments_parser_factory()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#module-image_transformer.utils.arguments_validator">image_transformer.utils.arguments_validator module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="image_transformer.utils.html#image_transformer.utils.arguments_validator.validate_and_parse_arguments"><code class="docutils literal notranslate"><span class="pre">validate_and_parse_arguments()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#image-transformer-utils-arguments-parser-module">image_transformer.utils.arguments_parser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#image-transformer-utils-arguments-validator-module">image_transformer.utils.arguments_validator module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="image_transformer.utils.html#module-image_transformer.utils.configurations_loader">image_transformer.utils.configurations_loader module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="image_transformer.utils.html#image_transformer.utils.configurations_loader.load_configurations"><code class="docutils literal notranslate"><span class="pre">load_configurations()</span></code></a></li>
 </ul>
@@ -292,24 +286,8 @@
 loads an image, processes it using specified image and pixel processors, and outputs the result as an SVG file.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="image_transformer.index.main">
-<span class="sig-prename descclassname"><span class="pre">image_transformer.index.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/image_transformer/index.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.index.main" title="Link to this definition"></a></dt>
-<dd><p>Main function to run the image-transformer program.
-This function performs the following steps:</p>
-<ol class="arabic simple">
-<li><p>Parses command-line arguments to get the image path, processors, size, output directory, and verbosity.</p></li>
-<li><p>Loads the image from the specified path.</p></li>
-<li><p>Analyzes the image to divide it into grid elements based on the specified grid processor.</p></li>
-<li><p>Processes the pixels within each grid element using the specified pixel processor.</p></li>
-<li><p>Outputs the processed image as an SVG file in the specified output directory.</p></li>
-</ol>
-<p>Command-line arguments:
-- image_path: Path to the input image file.
-- grid: Key for the grid image processor to use.
-- pixels: Key for the pixels processor to use.
-- size: Size parameter for the grid image processor.
-- output_directory: Directory to save the output SVG file.
-- verbose: Flag to enable verbose logging.</p>
-<p>The function prints various details about the image and processing steps if verbose mode is enabled.</p>
+<span class="sig-prename descclassname"><span class="pre">image_transformer.index.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/image_transformer/index.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#image_transformer.index.main" title="Link to this definition"></a></dt>
+<dd><p>Main function to execute the image transformation process.</p>
 </dd></dl>
 
 </section>
