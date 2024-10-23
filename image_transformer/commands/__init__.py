@@ -1,5 +1,6 @@
 import click
 
+from image_transformer.commands.helpers import helpers
 from image_transformer.commands.image_generator import image_generator_command_factory
 from image_transformer.commands.image_transformer import image_transformer_command_factory
 

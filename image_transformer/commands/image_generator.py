@@ -11,6 +11,8 @@ from image_transformer.constants import image_processors, pixels_processors, out
 
 from image_transformer import ImageTransformer
 
+from image_transformer.commands.helpers import helpers
+
 from image_transformer.image_processors import GenericGridImageProcessor
 from image_transformer.pixels_processors import GenericPixelsProcessor, ColorPaletteBasedPixelProcessor
 from image_transformer.output_builders import GenericOutputBuilder
@@ -23,20 +25,61 @@ def image_generator_command_factory(
     pixels_processors_keys: list[str],
     outputs_builders_keys: list[str]
 ):
-    @click.command("generate")
-    
-    @click.option('--width', type=click.INT, required=True)
-    @click.option('--height', type=click.INT, required=True)
-    
-    @click.option('--hex-color', type=ClickColor(), multiple=True, required=True)
-    
-    @click.option('--image-processor', type=click.Choice(image_processors_keys), default=configurations["defaults"]["image-processor"], required=True)
-    
-    @click.option('--output-builder', type=click.Choice(outputs_builders_keys), default=configurations["defaults"]["output-builder"], required=True)
-    @click.option('--size', type=click.INT, default=configurations["defaults"]["size"], required=True)
-    @click.option('--output-directory', type=click.Path(exists=True), default=configurations["defaults"]["output-directory"], required=True)
-    
-    @click.option('--verbose/--no-verbose', type=click.BOOL, default=True, required=True)
+    @click.command(
+        name="generate",
+        help="Generate an image with specified dimensions, colors, and processing options."
+    )
+    @click.option(
+        '--width',
+        type=click.INT,
+        required=True,
+        help=helpers["image_generator_command"]["--width"],
+        default=configurations["defaults"]["width"]
+    )
+    @click.option('--height',
+        type=click.INT,
+        required=True,
+        help=helpers["image_generator_command"]["--height"],
+        default=configurations["defaults"]["height"]
+    )
+    @click.option('--hex-color',
+        type=ClickColor(),
+        multiple=True,
+        required=True,
+        help=helpers["image_generator_command"]["--hex-color"],
+        default=configurations["defaults"]["hex-colors"]
+    )
+    @click.option(
+        '--image-processor',
+        type=click.Choice(image_processors_keys),
+        default=configurations["defaults"]["image-processor"],
+        required=True,
+        help=helpers["image_generator_command"]["--image-processor"]
+    )
+    @click.option('--output-builder',
+        type=click.Choice(outputs_builders_keys),
+        default=configurations["defaults"]["output-builder"],
+        required=True,
+        help=helpers["image_generator_command"]["--output-builder"]
+    )
+    @click.option('--size',
+        type=click.INT,
+        default=configurations["defaults"]["size"],
+        required=True,
+        help=helpers["image_generator_command"]["--size"]
+    )
+    @click.option('--output-directory',
+        type=click.Path(exists=True),
+        default=configurations["defaults"]["output-directory"],
+        required=True,
+        help=helpers["image_generator_command"]["--output-directory"]
+    )
+    @click.option('--verbose/--no-verbose',
+        type=click.BOOL,
+        default=configurations["defaults"]["verbose"],
+        required=True,
+        help=helpers["image_generator_command"]["--verbose/--no-verbose"]
+    )
     def image_generator_command(
         width,
         height,

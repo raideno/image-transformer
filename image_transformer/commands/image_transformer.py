@@ -9,10 +9,10 @@ from image_transformer import ImageTransformer
 
 from image_transformer.utils import load_image
 
+from image_transformer.commands import helpers
+
 from image_transformer.output_builders.generic_output_builder import GenericOutputBuilder
-
 from image_transformer.pixels_processors.generic_pixels_processor import GenericPixelsProcessor
-
 from image_transformer.image_processors.generic_grid_image_processor import GenericGridImageProcessor
 
 def image_transformer_command_factory(
@@ -21,17 +21,51 @@ def image_transformer_command_factory(
     pixels_processors_keys: list[str],
     outputs_builders_keys: list[str],
 ):
-    @click.command("transform")
-    
-    @click.option('--image-path', type=click.Path(exists=True), required=True)
-    
-    @click.option('--image-processor', type=click.Choice(image_processors_keys), default=configurations["defaults"]["image-processor"], required=True)
-    @click.option('--pixels-processor', type=click.Choice(pixels_processors_keys), default=configurations["defaults"]["pixels-processor"], required=True)
-    @click.option('--output-builder', type=click.Choice(outputs_builders_keys), default=configurations["defaults"]["output-builder"], required=True)
-    @click.option('--size', type=click.INT, default=configurations["defaults"]["size"], required=True)
-    @click.option('--output-directory', type=click.Path(exists=True), default=configurations["defaults"]["output-directory"], required=True)
-    
-    @click.option('--verbose/--no-verbose', type=click.BOOL, default=True, required=True)
+    @click.command(
+        name="transform",
+        help=helpers["image_transformer_command"]["help"]
+    )
+    @click.option('--image-path',
+        type=click.Path(exists=True),
+        required=True,
+        help=helpers["image_transformer_command"]["--image-path"]
+    )
+    @click.option('--image-processor',
+        type=click.Choice(image_processors_keys),
+        default=configurations["defaults"]["image-processor"],
+        required=True,
+        help=helpers["image_transformer_command"]["--image-processor"]
+    )
+    @click.option('--pixels-processor',
+        type=click.Choice(pixels_processors_keys),
+        default=configurations["defaults"]["pixels-processor"],
+        required=True,
+        help=helpers["image_transformer_command"]["--pixels-processor"]
+    )
+    @click.option('--output-builder',
+        type=click.Choice(outputs_builders_keys),
+        default=configurations["defaults"]["output-builder"],
+        required=True,
+        help=helpers["image_transformer_command"]["--output-builder"]
+    )
+    @click.option('--size',
+        type=click.INT,
+        default=configurations["defaults"]["size"],
+        required=True,
+        help=helpers["image_transformer_command"]["--size"]
+    )
+    @click.option('--output-directory',
+        type=click.Path(exists=True),
+        default=configurations["defaults"]["output-directory"],
+        required=True,
+        help=helpers["image_transformer_command"]["--output-directory"]
+    )
+    @click.option('--verbose/--no-verbose',
+        type=click.BOOL,
+        required=True,
+        default=configurations["defaults"]["verbose"],
+        help=helpers["image_transformer_command"]["--verbose/--no-verbose"]
+    )
     def image_transformer_command(
         image_path,
         image_processor,
